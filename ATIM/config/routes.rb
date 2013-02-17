@@ -1,6 +1,10 @@
 ATIM::Application.routes.draw do
 
 
+  get "home/login"
+
+  get "home/sign"
+
   root  to: 'home#login'
   # The priority is based upon order of creation:
   # first created -> highest priority.
