@@ -150,7 +150,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bootstrap-sass (= 2.0.0)
+  bootstrap-sass
   coffee-rails (= 3.2.2)
   cucumber-rails
   database_cleaner

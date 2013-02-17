@@ -1,2 +1,22 @@
-
+<table>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>	
+</table>
+<table class="form-signin">
+	 <p><%= form_tag root_path, :method => 'get' do %>
+      <tr>
+          <td><h1 class="form-signin-heading">Sign in</h1></td>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr>
+          <td> <%= text_field_tag :username, params[:busqueda] %></td>
+      </tr>
+      <tr>
+          <td> <%= text_field_tag :password, params[:pasword] %></td>
+      </tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td><%= submit_tag "Login", :name => 'login', class: "btn btn-large btn-primary"%> </tr></td>
+    <% end %>
+	</td></tr>
+</table>
 
