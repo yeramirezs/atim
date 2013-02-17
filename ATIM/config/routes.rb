@@ -1,6 +1,8 @@
 ATIM::Application.routes.draw do
 
 
+  resources :teachers
+
   get "home/login"
 
   get "home/sign"
