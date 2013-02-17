@@ -7,12 +7,11 @@
       <tr>
           <td><h1 class="form-signin-heading">Sign in</h1></td>
       </tr>
-      <tr><td>&nbsp;</td></tr>
       <tr>
-          <td> <%= text_field_tag :username, params[:busqueda] %></td>
+          <td> <%= text_field_tag :username, params[:busqueda], :placeholder => 'Email' %></td>
       </tr>
       <tr>
-          <td> <%= text_field_tag :password, params[:pasword] %></td>
+          <td> <%= password_field_tag :password, params[:pasword], :placeholder => 'Password'%></td>
       </tr>
       <tr><td>&nbsp;</td></tr>
       <tr><td><%= submit_tag "Login", :name => 'login', class: "btn btn-large btn-primary"%> </tr></td>
