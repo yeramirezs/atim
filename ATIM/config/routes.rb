@@ -1,6 +1,8 @@
 ATIM::Application.routes.draw do
 
 
+  resources :theses
+
   get "index/index"
 
   resources :teachers
