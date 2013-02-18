@@ -1,6 +1,8 @@
 ATIM::Application.routes.draw do
 
 
+  get "index/index"
+
   resources :teachers
 
   get "home/login"
@@ -10,6 +12,7 @@ ATIM::Application.routes.draw do
   root  to: 'home#login'
 
   match '/signup', to: 'teachers#new', :as => 'signup'
+  match '/index', to: 'index#index', :as => 'index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

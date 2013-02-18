@@ -8,18 +8,18 @@
   </td></tr>
 </table>
 <table class="form-signin">
-	 <p><%= form_tag root_path, :method => 'get' do %>
+	 <p><%= form_tag index_path, :method => 'get' do %>
       <tr>
           <td><h1 class="form-signin-heading">Sign in</h1></td>
       </tr>
       <tr>
-          <td> <%= text_field_tag :username, params[:busqueda], :placeholder => 'Email' %></td>
+          <td> <%= text_field_tag :email, params[:email], :placeholder => 'Email' %></td>
       </tr>
       <tr>
           <td> <%= password_field_tag :password, params[:pasword], :placeholder => 'Password'%></td>
       </tr>
       <tr><td>&nbsp;</td></tr>
-      <tr><td><%= submit_tag "Login", :name => 'login', class: "btn btn-large btn-primary"%> </tr></td>
+      <tr><td><%= submit_tag "Login",  :name => 'index', class: "btn btn-large btn-primary"%> </tr></td>
       <tr><td><%= link_to 'Sign up', signup_path%> </tr></td>
     <% end %>
 	</td></tr>
