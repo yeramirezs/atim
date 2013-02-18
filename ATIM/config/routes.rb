@@ -8,6 +8,8 @@ ATIM::Application.routes.draw do
   get "home/sign"
 
   root  to: 'home#login'
+
+  match '/signup', to: 'teachers#new', :as => 'signup'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

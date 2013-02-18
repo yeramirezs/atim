@@ -1,6 +1,11 @@
 <table>
 	<tr><td>&nbsp;</td></tr>
-	<tr><td>&nbsp;</td></tr>	
+	<tr><td>&nbsp;</td></tr>
+  <tr><td colspan="2">
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+  </td></tr>
 </table>
 <table class="form-signin">
 	 <p><%= form_tag root_path, :method => 'get' do %>
@@ -15,6 +20,7 @@
       </tr>
       <tr><td>&nbsp;</td></tr>
       <tr><td><%= submit_tag "Login", :name => 'login', class: "btn btn-large btn-primary"%> </tr></td>
+      <tr><td><%= link_to 'Sign up', signup_path%> </tr></td>
     <% end %>
 	</td></tr>
 </table>
