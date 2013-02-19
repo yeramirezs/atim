@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(:version => 20130218163107) do
 
+  create_table "books", :force => true do |t|
+    t.string   "author"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "teachers", :force => true do |t|
     t.string   "name"
     t.string   "email"
