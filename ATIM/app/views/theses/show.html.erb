@@ -1,20 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @thesis.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @thesis.description %>
-</p>
-
-<p>
-  <b>Teacher:</b>
-  <%= @thesis.teacher_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_thesis_path(@thesis) %> |
-<%= link_to 'Back', theses_path %>
+<%= render "layouts/header"%>
+<table width="100%" align="left">
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+    <tr>
+    	<td width="25%">
+    		<table class="nav nav-list" width="90%">
+    			<tr>
+    				<td>
+    				    <ul class="nav nav-list">
+					    <li class="nav-header">Options</li>
+					    <li class="active"><a href="#">Home</a></li>
+					    <li><%= link_to "Crear Tesis", '#' %></li>
+					    </ul>
+    				</td>
+    			</tr>
+    		</table>
+    	</td>
+	    <td width="75%">
+	    	<table>
+			    <tr>
+				    <td><b>Title:</b><br><%= @thesis.title %><br></td>
+				</tr>
+				<tr>
+				    <td><b>Description:</b><br><%= @thesis.description %></td>
+				</tr>    
+    		</table>
+	  	</td>
+   </tr>
+</table>

@@ -28,7 +28,7 @@
 				    <td><%= thesis.title %></td>
 				    <td width="10px">
 				    </td>
-				    <td><%= link_to 'Show', "#" %></td>
+				    <td><%= link_to 'Show', thesis_path(:id =>thesis.id, :id2 =>@teacher.id) %></td>
 				  </tr>
 				<% end %>
     		</table>

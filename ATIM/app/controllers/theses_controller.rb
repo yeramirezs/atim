@@ -13,8 +13,12 @@ class ThesesController < ApplicationController
   # GET /theses/1
   # GET /theses/1.json
   def show
+    @teacher = Teacher.find(params[:id2])
+    if(!@teacher)
+      flash[:notice] = "No ha iniciado sesion"
+      redirect_to root_path
+    end
     @thesis = Thesis.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @thesis }
