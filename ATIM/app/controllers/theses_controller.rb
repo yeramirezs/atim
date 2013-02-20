@@ -13,6 +13,10 @@ class ThesesController < ApplicationController
   # GET /theses/1
   # GET /theses/1.json
   def show
+    if(!params[:id2])
+      flash[:notice] = "No ha iniciado sesion"
+      redirect_to root_path
+    end
     @teacher = Teacher.find(params[:id2])
     if(!@teacher)
       flash[:notice] = "No ha iniciado sesion"
