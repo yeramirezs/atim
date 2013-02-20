@@ -1,11 +1,38 @@
-<table>
-	<tr><td>&nbsp;</td></tr>
-	<tr><td>&nbsp;</td></tr>
-  <tr><td colspan="2">
-
-    <% if flash[:notice] %>
-      <div id="notice"><%= flash[:notice] %></div>
-    <% end %>
-  </td></tr>
-</table>
 <%= render "layouts/header"%>
+<table width="100%" align="left">
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+    <tr>
+    	<td width="25%">
+    		<table class="nav nav-list" width="90%">
+    			<tr>
+    				<td>
+    				    <ul class="nav nav-list">
+					    <li class="nav-header">Options</li>
+					    <li class="active"><a href="#">Home</a></li>
+					    <li><%= link_to "Crear Tesis", '#' %></li>
+					    </ul>
+    				</td>
+    			</tr>
+    		</table>
+    	</td>
+	    <td width="75%">
+	    	<table>
+	    		<tr>
+	    			<td><h1>Listado de tesis</h1></td>
+	    		</tr>
+	    		<% @teacher.theses.each do |thesis| %>
+				  <tr>
+				    <td><%= thesis.title %></td>
+				    <td width="10px">
+				    </td>
+				    <td><%= link_to 'Show', "#" %></td>
+				  </tr>
+				<% end %>
+    		</table>
+	  	</td>
+   </tr>
+</table>
+
