@@ -42,9 +42,24 @@
 						    <div class="tab-content">
 							    <div class="tab-pane active" id="tab1">
 							    	<table>
-							    		<tr>
-								    		<td><b>Descripción:</b><br><%= @thesis.state %></td>
-								    	</tr>
+							    		
+							    		<%= form_tag :method => 'post' do %>
+								    		<tr>
+									    		<td><b>Descripción:</b><br><%= @thesis.state %></td>
+									    	</tr>
+									    	<tr><td>&nbsp;</td></tr>
+									    	<tr>
+									    		<% if @thesis.state=='Inactiva' %>
+										    		<td>
+										    			<%= submit_tag "Comenzar el proceso de tesis", :name => 'comenar', class: "btn"%>
+										    		</td>
+										    	<% else %>
+										    		<td>
+										    			<%= submit_tag "Terminar tesis", :name => 'terminar', class: "btn"%>
+										    		</td>
+									    		<% end %>
+									    	</tr>
+									    <% end %>
 								    </table>
 								</div>
 								<div class="tab-pane" id="tab2">

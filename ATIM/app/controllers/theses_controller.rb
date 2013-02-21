@@ -64,7 +64,8 @@ class ThesesController < ApplicationController
     end
     @teacher = Teacher.find(params[:teacher_id])
     @thesis = Thesis.new(params[:thesis])
-    
+    @thesis.teacher_id = @teacher.id
+    @thesis.state = 'Inactiva'
     respond_to do |format|
       if @thesis.save
         format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
@@ -87,6 +88,7 @@ class ThesesController < ApplicationController
       @teacher = Teacher.find(params[:teacher_id])
       @thesis = Thesis.new(params[:thesis])
       @thesis.teacher_id = @teacher.id
+      @thesis.state = 'Inactiva'
       respond_to do |format|
         if @thesis.save
           format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
