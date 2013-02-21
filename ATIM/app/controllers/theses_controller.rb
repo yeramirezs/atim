@@ -23,6 +23,10 @@ class ThesesController < ApplicationController
       redirect_to root_path
     end
     @thesis = Thesis.find(params[:id])
+    if(@teacher.id!=@thesis.id)
+      flash[:notice] = "Error de autentificacion"
+      redirect_to root_path
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @thesis }
@@ -33,7 +37,11 @@ class ThesesController < ApplicationController
   # GET /theses/new.json
   def new
     @thesis = Thesis.new
-
+     if(!params[:id])
+      flash[:notice] = "No ha iniciado sesion"
+      redirect_to root_path
+    end
+    @teacher = Teacher.find(params[:id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @thesis }
@@ -48,7 +56,16 @@ class ThesesController < ApplicationController
   # POST /theses
   # POST /theses.json
   def create
+
+    if(!params[:id])
+      flash[:notice] = "No ha iniciado sesion"
+      redirect_to root_path
+    end
+    @teacher = Teacher.find(params[:id])
     @thesis = Thesis.new(params[:thesis])
+    @thesis.update_attribute(:teacher_id, @teacher.id)
+    
+
 
     respond_to do |format|
       if @thesis.save
