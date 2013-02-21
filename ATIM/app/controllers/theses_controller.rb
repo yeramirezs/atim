@@ -24,7 +24,7 @@ class ThesesController < ApplicationController
       redirect_to root_path
     end
     @thesis = Thesis.find(params[:id])
-    if(@teacher.id!=@thesis.id)
+    if(@teacher.id!=@thesis.teacher_id)
       flash[:notice] = "Error de autentificacion"
       redirect_to root_path
     end
@@ -58,17 +58,16 @@ class ThesesController < ApplicationController
   # POST /theses.json
   def create
 
-    if(!params[:id2])
+    if(!params[:teacher_id])
       flash[:notice] = "No ha iniciado sesion"
       redirect_to root_path
     end
-    @teacher = Teacher.find(params[:id2])
+    @teacher = Teacher.find(params[:teacher_id])
     @thesis = Thesis.new(params[:thesis])
-    @thesis.teacher_id = @teacher.id
     
     respond_to do |format|
       if @thesis.save
-        format.html { redirect_to thesis_path(:id =>thesis.id, :id2 =>@teacher.id), notice: 'Thesis was successfully created.' }
+        format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
         format.json { render json: @thesis, status: :created, location: @thesis }
       else
         format.html { render action: "new" }
@@ -80,7 +79,25 @@ class ThesesController < ApplicationController
   # PUT /theses/1
   # PUT /theses/1.json
   def update
-    @thesis = Thesis.find(params[:id])
+    if(params[:id]=="new")
+      if(!params[:teacher_id])
+        flash[:notice] = "No ha iniciado sesion"
+        redirect_to root_path
+      end
+      @teacher = Teacher.find(params[:teacher_id])
+      @thesis = Thesis.new(params[:thesis])
+      @thesis.teacher_id = @teacher.id
+      respond_to do |format|
+        if @thesis.save
+          format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
+          format.json { render json: @thesis, status: :created, location: @thesis }
+        else
+          format.html { render action: "new", notice: ''+@thesis.teacher_id }
+          format.json { render json: @thesis.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @thesis = Thesis.find(params[:id])
 
     respond_to do |format|
       if @thesis.update_attributes(params[:thesis])
@@ -91,6 +108,8 @@ class ThesesController < ApplicationController
         format.json { render json: @thesis.errors, status: :unprocessable_entity }
       end
     end
+    end
+    
   end
 
   # DELETE /theses/1

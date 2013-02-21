@@ -27,7 +27,7 @@
 				</tr>
 			    <tr>
 				    <td>
-				    	<%= form_for @thesis, :url=>{:id2=>@teacher.id} do |f| %>
+				    	<%= form_for @thesis, :url=>{:teacher_id=>@teacher.id}, :method => :put do |f| %>
 						  <% if @thesis.errors.any? %>
 						    <div id="error_explanation">
 						      <h2><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h2>
