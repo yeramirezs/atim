@@ -1,4 +1,6 @@
 class TeachersController < ApplicationController
+
+  
   # GET /teachers
   # GET /teachers.json
   def index

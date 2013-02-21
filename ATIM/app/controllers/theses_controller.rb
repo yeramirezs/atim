@@ -1,4 +1,5 @@
 class ThesesController < ApplicationController
+
   # GET /theses
   # GET /theses.json
   def index
@@ -57,19 +58,17 @@ class ThesesController < ApplicationController
   # POST /theses.json
   def create
 
-    if(!params[:id])
+    if(!params[:id2])
       flash[:notice] = "No ha iniciado sesion"
       redirect_to root_path
     end
-    @teacher = Teacher.find(params[:id])
+    @teacher = Teacher.find(params[:id2])
     @thesis = Thesis.new(params[:thesis])
-    @thesis.update_attribute(:teacher_id, @teacher.id)
+    @thesis.teacher_id = @teacher.id
     
-
-
     respond_to do |format|
       if @thesis.save
-        format.html { redirect_to @thesis, notice: 'Thesis was successfully created.' }
+        format.html { redirect_to thesis_path(:id =>thesis.id, :id2 =>@teacher.id), notice: 'Thesis was successfully created.' }
         format.json { render json: @thesis, status: :created, location: @thesis }
       else
         format.html { render action: "new" }

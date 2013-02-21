@@ -5,7 +5,7 @@
 	<tr><td>&nbsp;</td></tr>
 	<tr><td>&nbsp;</td></tr>
     <tr>
-    	<td width="25%">
+    	<td width="25%" valign="top">
     		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="90%" width="90%">
     			<tr>
     				<td>
@@ -20,14 +20,14 @@
     			</tr>
     		</table>
     	</td>
-	    <td width="75%">
+	    <td width="75%" >
 	    	<table>
 	    		<tr>
 	    			<td><h1>New thesis</h1></td>
 				</tr>
 			    <tr>
 				    <td>
-				    	<%= form_for(@thesis, :teacher_id=>@teacher.id) do |f| %>
+				    	<%= form_for @thesis, :url=>{:id2=>@teacher.id} do |f| %>
 						  <% if @thesis.errors.any? %>
 						    <div id="error_explanation">
 						      <h2><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h2>
