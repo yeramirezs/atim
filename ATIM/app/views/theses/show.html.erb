@@ -21,7 +21,7 @@
     		</table>
     	</td>
 	    <td width="75%">
-	    	<table>
+	    	<table width="100%">
 			    <tr>
 				    <td><b>Título de la tesis:</b><br><%= @thesis.title %><br></td>
 				</tr>
@@ -31,17 +31,20 @@
 				</tr> 
 				<tr><td>&nbsp;</td></tr>
 				<tr><td><b>Más Opciones:</b></td></tr>
+				
 				<tr>
-					<td>
-						 <div class="tabbable"> <!-- Only required for left/right tabs -->
+					<td width="100%">
+						 <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
 						    <ul class="nav nav-tabs">
 							    <li class="active"><a href="#tab1" data-toggle="tab">Estado de Tesis</a></li>
 							    <li><a href="#tab2" data-toggle="tab">Nuevo Estudiante</a></li>
 							    <li><a href="#tab3" data-toggle="tab">Nueva Reunion</a></li>
+							    <li><a href="#tab4" data-toggle="tab">Consultar Estudiantes</a></li>
+							    <li><a href="#tab5" data-toggle="tab">Consultar Reuniones</a></li>
 							</ul>
 						    <div class="tab-content">
 							    <div class="tab-pane active" id="tab1">
-							    	<table>
+							    	<table width="100%">
 							    		
 							    		<%= form_tag comenzar_path(:email=>@teacher.email,:id=>@thesis.id), :method => 'post' do %>
 								    		<tr>
@@ -63,10 +66,16 @@
 								    </table>
 								</div>
 								<div class="tab-pane" id="tab2">
-								    <p>Howdy, I'm in Section 2.</p>
+								    <p>Nuevo estudiante</p>
 							    </div>
-							    <div class="tab-pane" id="tab2">
-								    <p>Howdy, I'm in Section 3.</p>
+							    <div class="tab-pane" id="tab3">
+								    <p>Nueva reunion.</p>
+							    </div>
+							    <div class="tab-pane" id="tab4">
+								    <p>Lista de estudiantes</p>
+							    </div>
+							    <div class="tab-pane" id="tab5">
+								    <p>Buesqueda reuniones.</p>
 							    </div>
 						    </div>
 						</div>
