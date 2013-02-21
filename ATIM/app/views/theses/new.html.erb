@@ -11,7 +11,7 @@
     				<td>
     				    <ul class="nav nav-list">
 					    <li class="nav-header">Options</li>
-					    <li><%= link_to "Home", '#' %></li>
+					    <li><%= link_to "Home", index_path(:email=>@teacher.email) %></li>
 					    <li class="active"><%= link_to "Crear Tesis", new_thesis_path(:id=>@teacher.id) %></li>
 					    </ul>
     				</td>

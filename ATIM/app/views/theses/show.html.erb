@@ -11,7 +11,7 @@
     				<td>
     				    <ul class="nav nav-list">
 					    <li class="nav-header">Options</li>
-					    <li class="active"><a href="#">Home</a></li>
+					    <li class="active"><%= link_to "Home", index_path(:email=>@teacher.email) %></a></li>
 					    <li><%= link_to "Crear Tesis", new_thesis_path(:id=>@teacher.id) %></li>
 					    </ul>
     				</td>
@@ -36,8 +36,8 @@
 						 <div class="tabbable"> <!-- Only required for left/right tabs -->
 						    <ul class="nav nav-tabs">
 							    <li class="active"><a href="#tab1" data-toggle="tab">Estado de Tesis</a></li>
-							    <li><a href="#tab2" data-toggle="tab">Agregar Nuevo Estudiante</a></li>
-							    <li><a href="#tab3" data-toggle="tab">Agregar Nueva Reunion</a></li>
+							    <li><a href="#tab2" data-toggle="tab">Nuevo Estudiante</a></li>
+							    <li><a href="#tab3" data-toggle="tab">Nueva Reunion</a></li>
 							</ul>
 						    <div class="tab-content">
 							    <div class="tab-pane active" id="tab1">
