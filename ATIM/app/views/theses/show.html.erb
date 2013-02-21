@@ -28,7 +28,31 @@
 				<tr><td>&nbsp;</td></tr>
 				<tr>
 				    <td><b>Descripción:</b><br><%= @thesis.description %></td>
-				</tr>    
+				</tr> 
+				<tr><td>&nbsp;</td></tr>
+				<tr><td><b>Más Opciones:</b></td></tr>
+				<tr>
+					<td>
+						 <div class="tabbable"> <!-- Only required for left/right tabs -->
+						    <ul class="nav nav-tabs">
+							    <li class="active"><a href="#tab1" data-toggle="tab">Estado de Tesis</a></li>
+							    <li><a href="#tab2" data-toggle="tab">Agregar Nuevo Estudiante</a></li>
+							    <li><a href="#tab3" data-toggle="tab">Agregar Nueva Reunion</a></li>
+							</ul>
+						    <div class="tab-content">
+							    <div class="tab-pane active" id="tab1">
+								    <p>I'm in Section 1.</p>
+								</div>
+								<div class="tab-pane" id="tab2">
+								    <p>Howdy, I'm in Section 2.</p>
+							    </div>
+							    <div class="tab-pane" id="tab2">
+								    <p>Howdy, I'm in Section 3.</p>
+							    </div>
+						    </div>
+						</div>
+					</td>
+				</tr>  
     		</table>
 	  	</td>
    </tr>
