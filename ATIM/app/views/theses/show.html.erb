@@ -43,7 +43,7 @@
 							    <div class="tab-pane active" id="tab1">
 							    	<table>
 							    		
-							    		<%= form_tag :method => 'post' do %>
+							    		<%= form_tag comenzar_path(:email=>@teacher.email,:id=>@thesis.id), :method => 'post' do %>
 								    		<tr>
 									    		<td><b>Descripción:</b><br><%= @thesis.state %></td>
 									    	</tr>
@@ -51,7 +51,7 @@
 									    	<tr>
 									    		<% if @thesis.state=='Inactiva' %>
 										    		<td>
-										    			<%= submit_tag "Comenzar el proceso de tesis", :name => 'comenar', class: "btn"%>
+										    			<%= submit_tag "Comenzar el proceso de tesis", :name => 'comenzar', class: "btn"%>
 										    		</td>
 										    	<% else %>
 										    		<td>

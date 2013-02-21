@@ -15,6 +15,8 @@ ATIM::Application.routes.draw do
 
   match '/signup', to: 'teachers#new', :as => 'signup'
   match '/index', to: 'index#index', :as => 'index'
+
+   match '/ranking', to: 'index#comenzarTesis', :as=> 'comenzar'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
