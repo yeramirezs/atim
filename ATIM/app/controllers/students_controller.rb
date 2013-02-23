@@ -40,11 +40,14 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @student = Student.new(params[:student])
+    @thesis = Thesis.find(params[:thesis_id])
+     @student = Student.new(params[:student])
+    @student.thesis_id = @thesis.id
+   
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else
         format.html { render action: "new" }

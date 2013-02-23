@@ -68,7 +68,7 @@
 								</div>
 								<div class="tab-pane" id="tab2">
 									<b>Nuevo estudiante</b>
-									<%= form_for @student, :url=>{:thesis_id=>@thesis.id, :controller=>"students", :action=>"create"}, :method => "post" do |f| %>
+									<%= form_for @student, :url=>{:thesis_id=>@thesis.id, :emailTeacher=>@teacher.email, :controller=>"students", :action=>"create"}, :method => "post" do |f| %>
 									  <% if @student.errors.any? %>
 									    <div id="error_explanation">
 									      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
