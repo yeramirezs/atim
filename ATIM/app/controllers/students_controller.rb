@@ -50,7 +50,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: @student.errors.full_messages}
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
