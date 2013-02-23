@@ -56,17 +56,40 @@ class StudentsController < ApplicationController
   # PUT /students/1
   # PUT /students/1.json
   def update
-    @student = Student.find(params[:id])
-
-    respond_to do |format|
-      if @student.update_attributes(params[:student])
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
+    if(params[:id]=="new")
+      if(!params[:teacher_id])
+        flash[:notice] = "No ha iniciado sesion"
+        redirect_to root_path
       end
+      @teacher = Teacher.find(params[:teacher_id])
+      @thesis = Thesis.new(params[:thesis])
+      @thesis.teacher_id = @teacher.id
+      @thesis.state = 'Inactiva'
+      respond_to do |format|
+        if @thesis.save
+          format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
+          format.json { render json: @thesis, status: :created, location: @thesis }
+        else
+          format.html { render action: "new", notice: ''+@thesis.teacher_id }
+          format.json { render json: @thesis.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @student = Student.find(params[:id])
+
+      respond_to do |format|
+        if @student.update_attributes(params[:student])
+          format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @student.errors, status: :unprocessable_entity }
+        end
     end
+  end
+
+
+    
   end
 
   # DELETE /students/1

@@ -67,8 +67,8 @@
 								    </table>
 								</div>
 								<div class="tab-pane" id="tab2">
-									<p>Nuevo estudiante</p>
-									<%= form_for @student, :url=>{:thesis_id=>@thesis.id}, :method => :put do |f| %>
+									<b>Nuevo estudiante</b>
+									<%= form_for @student, :url=>{:thesis_id=>@thesis.id, :controller=>"students", :action=>"create"}, :method => "post" do |f| %>
 									  <% if @student.errors.any? %>
 									    <div id="error_explanation">
 									      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
@@ -96,7 +96,21 @@
 								    <p>Nueva reunion.</p>
 							    </div>
 							    <div class="tab-pane" id="tab4">
-								    <p>Lista de estudiantes</p>
+								    <b>Lista de estudiantes</b>
+								    <table>
+								    	<tr>
+										    <td><b>Nombre Estudiante</b></td>
+										    <td width="10px"></td>
+										    <td><b>Email Estudiante</b></td>
+										  </tr>
+									    <% @thesis.students.each do |student| %>
+										  <tr>
+										    <td><%= student.name %></td>
+										    <td width="10px"></td>
+										    <td><%= student.email %></td>
+										  </tr>
+										<% end %>
+									</table>
 							    </div>
 							    <div class="tab-pane" id="tab5">
 								    <p>Buesqueda reuniones</p>
