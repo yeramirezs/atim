@@ -24,5 +24,16 @@
                          :done         => false}
                     ])
 
+some_teachers =   Teacher.create([ { :name =>"ahl", :email =>"ahl@uniandes.edu.co", :created_at =>"01/04/2012", :updated_at =>"01/05/2012"}])
+
+some_thesis =    Thesis.create([{ :title =>"El equilibrio economico dinamico",
+                                  :description => "Analisis del equilibrio economico desde Walras hasta los economistas actuales",
+                                  :teacher_id  => 1},
+
+                                { :title =>"Los mercados no regulados y la destrucion del tejido social",
+                                  :description => "Estudio sobre el efecto de la desregulacion de mercados y el aumento de la pobreza, segun Steinberg",
+                                  :teacher_id  => 1}
+                               ])
+
 
 

@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <%= stylesheet_link_tag 'commitments.css', :media => 'screen' %>
+    <h1>Compromisos establecidos para la tesis</h1>
+    <br/>
+    <h2> <%= @thesis_id %> -  <%=  @thesis.title %>  </h2>
+  </head>
+  <body>
+
+    <table id="commitments">
+      <tr>
+        <th> Commitment </th>
+        <th> Description </th>
+        <th> Meeting </th>
+        <th> Due date </th>
+        <th> Status </th>
+      </tr>
+      <% @commitments.each do |c| %>
+        <tr>
+          <td><%= c.title %> </td>
+          <td><%= c.description %> </td>
+          <td id="meeting"><%= c.meeting_id %> </td>
+          <td><%= c.due_date %> </td>
+          <td><%= c.done %> </td>
+      <% end %>
+    </table>
+  </body>
+
+</html>

@@ -1,5 +1,14 @@
 ATIM::Application.routes.draw do
 
+  match 'commitments/:id' => 'commitments#search'
+
+  resources :commitments
+
+  get "commitments/create"
+
+  get "commitments/edit"
+
+  get "commitments/close"
 
   resources :theses
 
