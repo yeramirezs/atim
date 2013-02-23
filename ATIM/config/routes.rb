@@ -1,5 +1,7 @@
 ATIM::Application.routes.draw do
 
+  resources :students
+
   match 'commitments/:id' => 'commitments#search'
 
   resources :commitments

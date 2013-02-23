@@ -14,6 +14,7 @@ class ThesesController < ApplicationController
   # GET /theses/1
   # GET /theses/1.json
   def show
+
     if(!params[:id2])
       flash[:notice] = "No ha iniciado sesion"
       redirect_to root_path
@@ -24,6 +25,7 @@ class ThesesController < ApplicationController
       redirect_to root_path
     end
     @thesis = Thesis.find(params[:id])
+    @student = Student.new
     if(@teacher.id!=@thesis.teacher_id)
       flash[:notice] = "Error de autentificacion"
       redirect_to root_path
