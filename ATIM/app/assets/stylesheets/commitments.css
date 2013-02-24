@@ -3,7 +3,7 @@ table
   margin: 10px;
   border-collapse:  collapse;
   width: 100%;
-
+  border-bottom: 2px solid black;
 }
 #commitments th
 {
@@ -11,34 +11,49 @@ table
     text-align:center;
     padding-top:5px;
     padding-bottom:4px;
+    color: white;
     background-color: royalblue;
-    color:#ffffff;
+    border-bottom: 2px solid black;
 }
-#commitments tr.alt td
-{
-    color:#000000;
-    background-color: aliceblue;
-}
+
 table th
 {
   border: 2px solid white;
   font-weight: bold;
-  background-color: royalblue;
+  color: black;
+  background-color: green;
 }
  table td#meeting
 {
-    padding: 4px;
     text-align: center;
-    border: 1px solid white;
-    background-color: aliceblue;
-    border-bottom: 2px solid black;
 }
 table td
 {
-  padding: 4px;
-  text-align: left;
-  border: 1px solid white;
-  background-color: aliceblue;
-  border-bottom: 2px solid black;
+    padding: 4px;
+    text-align: left;
+    border: 1px solid white;
+    color:black;
+    background-color: orange;
+    border-bottom: 2px antiquewhite;
+}
+table *.r0
+{
+    color: black;
+    background-color: powderblue;
+}
+table *.r1
+{
+    color: black;
+    background-color: white;
+}
+table td#s1
+{
+    color: black;
+    background-color: crimson;
+}
+table td#s2
+{
+    color: black;
+    background-color: palegreen;
 }
 
