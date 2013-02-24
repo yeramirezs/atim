@@ -1,12 +1,12 @@
 <%= render "layouts/header"%>
-<table width="100%" align="left">
+<table width="100%"  style="left:0px;">
 	<tr><td>&nbsp;</td></tr>
 	<tr><td>&nbsp;</td></tr>
 	<tr><td>&nbsp;</td></tr>
 	<tr><td>&nbsp;</td></tr>
     <tr>
-    	<td width="25%" valign="top">
-    		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="90%">
+    	<td width="20%" valign="top" align="center">
+    		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="70%">
     			<tr>
     				<td>
     				    <ul class="nav nav-list">
@@ -19,6 +19,7 @@
     				<tr><td>&nbsp;</td></tr>
     			</tr>
     		</table>
+
     	</td>
 	    <td width="75%">
 	    	<table>
@@ -36,5 +37,14 @@
     		</table>
 	  	</td>
    </tr>
+</table>
+<table>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+  <tr><td colspan="2">
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+  </td></tr>
 </table>
 

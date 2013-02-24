@@ -5,8 +5,8 @@
 	<tr><td>&nbsp;</td></tr>
 	<tr><td>&nbsp;</td></tr>
     <tr>
-    	<td width="25%" valign="top">
-    		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="90%" width="90%">
+    	<td width="20%" valign="top" align="center">
+    		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="70%">
     			<tr>
     				<td>
     				    <ul class="nav nav-list">
@@ -41,8 +41,7 @@
 							    <li><a href="#tab3" data-toggle="tab">Nueva Reunion</a></li>
 							    <li><a href="#tab4" data-toggle="tab">Consultar Estudiantes</a></li>
 							    <li><a href="#tab5" data-toggle="tab">Consultar Reuniones</a></li>
-                                <%= link_to 'Consultar compromisos', commitment_path( @thesis) %></td>
-                                <
+                                <li><%= link_to 'Consultar compromisos', commitment_path( @thesis) %></li>
 							</ul>
 						    <div class="tab-content">
 							    <div class="tab-pane active" id="tab1">
@@ -68,13 +67,50 @@
 								    </table>
 								</div>
 								<div class="tab-pane" id="tab2">
-								    <p>Nuevo estudiante</p>
+									<b>Nuevo estudiante</b>
+									<%= form_for @student, :url=>{:thesis_id=>@thesis.id, :emailTeacher=>@teacher.email, :controller=>"students", :action=>"create"}, :method => "post" do |f| %>
+									  <% if @student.errors.any? %>
+									    <div id="error_explanation">
+									      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+									      <ul>
+									      <% @student.errors.full_messages.each do |msg| %>
+									        <li><%= msg %></li>
+									      <% end %>
+									      </ul>
+									    </div>
+									  <% end %>
+									  <div class="field">
+									    <%= f.text_field :name, :placeholder => 'Name' %>
+									  </div>
+									  <div class="field">
+									    <%= f.text_field :email, :placeholder => 'Email' %>
+									  </div>
+									  <div class="actions">
+									    <%= f.submit "Asignar", class: "btn"%>
+									  </div>
+									<% end %>
+								    
 							    </div>
 							    <div class="tab-pane" id="tab3">
 								    <p>Nueva reunion.</p>
 							    </div>
 							    <div class="tab-pane" id="tab4">
-								    <p>Lista de estudiantes</p>
+								    <b>Lista de estudiantes</b>
+								    <table>
+								    	<tr>
+										    <td><b>Nombre Estudiante</b></td>
+										    <td width="10px"></td>
+										    <td><b>Email Estudiante</b></td>
+										  </tr>
+									    <% @thesis.students.each do |student| %>
+										  <tr>
+										    <td><%= student.name %></td>
+										    <td width="10px"></td>
+										    <td><%= student.email %></td>
+										  </tr>
+										<% end %>
+									</table>
 							    </div>
 							    <div class="tab-pane" id="tab5">
 								    <p>Buesqueda reuniones</p>

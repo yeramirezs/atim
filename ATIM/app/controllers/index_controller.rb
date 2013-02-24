@@ -24,8 +24,12 @@ class IndexController < ApplicationController
         flash[:notice] = "Tesis no valida"
         redirect_to root_path
       else
-        @thesis.update_attribute(:state, "Activo")
-        redirect_to index_path(:email=>params[:email])
+        if(@thesis.students.length==0)
+          flash[:notice] = "No ha asignado estudiantes"
+        else
+          @thesis.update_attribute(:state, "Activo")
+        end
+          redirect_to index_path(:email=>params[:email])
       end
     end
   end

@@ -2,6 +2,7 @@ class Teacher < ActiveRecord::Base
 
 	validates_presence_of :name, :email
 	has_many :theses
+	validates_uniqueness_of :email
 
 	def self.search(search)
 	  if search

@@ -14,6 +14,7 @@ class ThesesController < ApplicationController
   # GET /theses/1
   # GET /theses/1.json
   def show
+
     if(!params[:id2])
       flash[:notice] = "No ha iniciado sesion"
       redirect_to root_path
@@ -24,6 +25,7 @@ class ThesesController < ApplicationController
       redirect_to root_path
     end
     @thesis = Thesis.find(params[:id])
+    @student = Student.new
     if(@teacher.id!=@thesis.teacher_id)
       flash[:notice] = "Error de autentificacion"
       redirect_to root_path
@@ -62,6 +64,7 @@ class ThesesController < ApplicationController
       flash[:notice] = "No ha iniciado sesion"
       redirect_to root_path
     end
+    
     @teacher = Teacher.find(params[:teacher_id])
     @thesis = Thesis.new(params[:thesis])
     @thesis.teacher_id = @teacher.id
@@ -71,7 +74,7 @@ class ThesesController < ApplicationController
         format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
         format.json { render json: @thesis, status: :created, location: @thesis }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: @thesis.errors.full_messages}
         format.json { render json: @thesis.errors, status: :unprocessable_entity }
       end
     end
@@ -90,14 +93,14 @@ class ThesesController < ApplicationController
       @thesis.teacher_id = @teacher.id
       @thesis.state = 'Inactiva'
       respond_to do |format|
-        if @thesis.save
-          format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
-          format.json { render json: @thesis, status: :created, location: @thesis }
-        else
-          format.html { render action: "new", notice: ''+@thesis.teacher_id }
-          format.json { render json: @thesis.errors, status: :unprocessable_entity }
-        end
+      if @thesis.save
+        format.html { redirect_to index_path(:email=>@teacher.email), notice: 'Thesis was successfully created.' }
+        format.json { render json: @thesis, status: :created, location: @thesis }
+      else
+        format.html { redirect_to index_path(:email=>@teacher.email), notice: @thesis.errors.full_messages }
+        format.json { render json: @thesis.errors, status: :unprocessable_entity }
       end
+    end
     else
       @thesis = Thesis.find(params[:id])
 
