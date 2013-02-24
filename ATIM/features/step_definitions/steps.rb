@@ -2,20 +2,24 @@ Given /^I am on (.+)$/ do |page_name|
   visit "/"+page_name
 end
 
-When /^I create a book with name "([^\"]*)"$/ do |search|
-  visit "/books/new"
-  fill_in('book_name', :with => "Libro 1")
-  fill_in('book_author', :with => "Autor 1")
-  fill_in('book_isbn', :with => "1")
-  fill_in('book_totalRanking', :with => "0")
-  fill_in('book_numberRanking', :with => "0")
-  click_button("Create Book")
-end 
 
-When /^I try to search a book with "([^\"]*)"$/ do |search|
-  fill_in('busqueda', :with => search)
-  click_button("Buscar")
-end 
+When /^I enter with the username "([^\"]*)"$/ do |username|
+  visit root_path
+  fill_in('email', :with => username)
+  click_button("Login")
+end
+
+Then /^I press "([^\"]*)"$/ do |link|
+  click_link link
+end
+
+Then /^I fill the thesis with "([^\"]*)","([^\"]*)"$/ do |title, description|
+  fill_in('thesis_title', :with => title)
+  fill_in('thesis_description', :with => description)
+  click_button("Create Thesis")
+end
+
+
 
 Then /^I should see "([^\"]*)"$/ do |text|
   page.should have_content(text)

@@ -1,23 +1,31 @@
-Feature: Search book
+Feature: Create Thesis
 
-Scenario: Not exists
-	Given I am on search
-	When I try to search a book with "ppppppppppppppppppppppppppppppp"
-	Then I should see "No se encontro nada"
+Scenario: Blank data
+	When I enter with the username "profesor"
+	Then I press "Crear Tesis"
+	Then I fill the thesis with "","" 
+	Then I should see "Title can't be blank"
 
-Scenario: Empty search
-	When I create a book with name " "
-	Given I am on search
-	When I try to search a book with ""
-	Then I should be on result
-	Then I should see "Libro 1"
+Scenario: Good Thesis
+	When I enter with the username "profesor"
+	Then I press "Crear Tesis"
+	Then I fill the thesis with "Tesis 1","Tesis 1" 
+	Then I should see "Thesis was successfully created."
 
-Scenario: Existing whole name
-	Given I am on search
-	When I try to search a book with "Libro 1"
-	Then I should see "Libro 1"
+Scenario: Short title
+	When I enter with the username "profesor"
+	Then I press "Crear Tesis"
+	Then I fill the thesis with "Te","Tesis 1" 
+	Then I should see "Title is too short (minimum is 3 characters)"
 
-Scenario: Existing partial name
-	Given I am on search
-	When I try to search a book with "Libro"
-	Then I should see "Libro 1"
+Scenario: Short description
+	When I enter with the username "profesor"
+	Then I press "Crear Tesis"
+	Then I fill the thesis with "Tesis !","Te" 
+	Then I should see "Description is too short (minimum is 3 characters)"
+
+Scenario: Long title
+	When I enter with the username "profesor"
+	Then I press "Crear Tesis"
+	Then I fill the thesis with "Tesis !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!","Tesis 1" 
+	Then I should see "Title is too long (maximum is 140 characters)"
