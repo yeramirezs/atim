@@ -3,7 +3,6 @@ table
   margin: 10px;
   border-collapse:  collapse;
   width: 100%;
-  border-bottom: 2px solid black;
 }
 #commitments th
 {
@@ -13,7 +12,6 @@ table
     padding-bottom:4px;
     color: white;
     background-color: royalblue;
-    border-bottom: 2px solid black;
 }
 
 table th
@@ -33,7 +31,7 @@ table td
     text-align: left;
     border: 1px solid white;
     color:black;
-    background-color: orange;
+    background-color: whitesmoke;
     border-bottom: 2px antiquewhite;
 }
 table *.r0
@@ -48,13 +46,17 @@ table *.r1
 }
 table td#s1
 {
+    text-align: center;
     color: black;
     background-color: crimson;
+    font-weight: bold;
 }
 table td#s2
 {
+    text-align: center;
     color: black;
     background-color: palegreen;
+    font-weight: bold;
 }
 
 *.link
@@ -63,5 +65,56 @@ table td#s2
   font-size: 16px;
   font-weight: bold;
   color: darkblue;
+}
+
+*.button
+{
+    text-align:left;
+    vertical-align: middle;
+    color: black;
+    background-color: whitesmoke;
+}
+
+*.radio_button
+{
+    text-align:left;
+    vertical-align: middle;
+    color: black;
+    font-weight: bold;
+    background-color: whitesmoke;
+}
+*.radios
+{
+    text-align:left;
+    vertical-align: middle;
+    color: black;
+    font-weight: bold;
+    background-color: whitesmoke;
+}
+
+*.hidden
+{
+    visibility:hidden;
+}
+
+*.right
+{
+    text-align: right;
+}
+
+*.center
+{
+    text-align: center;
+}
+*.bold
+{
+    font-weight: bold;
+}
+*.selector
+{
+    font-weight:bold;
+    color:black;
+    text-align: center;
+    font-size: 24px;
 }
 
