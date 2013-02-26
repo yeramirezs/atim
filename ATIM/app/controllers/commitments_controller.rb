@@ -6,7 +6,7 @@ class CommitmentsController < ApplicationController
   def search
     @thesis_id = params[:id]
     @thesis = Thesis.find( @thesis_id)
-    @teacher =  @thesis.teacher_id
+    @teacher =  Teacher.find(@thesis.teacher_id)
     query = 'thesis_id = ' << @thesis_id
     comm_type = params[:comm_type]
     if comm_type == 'open' then

@@ -1,12 +1,18 @@
 <html xmlns="http://www.w3.org/1999/html">
   <head>
-    <%= stylesheet_link_tag 'commitments.css', :media => 'screen' %>
+    </br>
+    </br>
+    </br>
+    </br>
+    <%= stylesheet_link_tag 'commitments.css', :media => 'screen' %> 
     <h2 class="center">Compromisos establecidos para la tesis</h2>
     <br/>
     <h2 class="center"> <%= @thesis_id %> -  <%=  @thesis.title %>  </h2>
     <br/>
   </head>
   <body>
+    <%= render "layouts/header"%>
+    
      <div class="link">
        <p class="selector">Ver:
           <%= link_to "Open     ", commitment_path(:id=>@thesis, :comm_type=>'open')   %>
@@ -38,8 +44,4 @@
           <% even = (even + 1) % 2 %>
       <% end %>
     </table>
-    <div class="link">
-       <br> <br>
-       <%= link_to 'Regresar', root_path %>
-    </div>
   </body>
