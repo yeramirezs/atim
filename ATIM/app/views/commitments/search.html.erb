@@ -44,4 +44,8 @@
           <% even = (even + 1) % 2 %>
       <% end %>
     </table>
+    <div class="link">
+       <br> <br>
+       <%= link_to 'Regresar', thesis_path(:id =>@thesis.id, :id2 =>@teacher.id) %>
+    </div>
   </body>
