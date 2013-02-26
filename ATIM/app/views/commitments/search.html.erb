@@ -1,5 +1,4 @@
-<html xmlns="http://www.w3.org/1999/html">
-  <head>
+    <%= render "layouts/header"%>
     </br>
     </br>
     </br>
@@ -9,9 +8,7 @@
     <br/>
     <h2 class="center"> <%= @thesis_id %> -  <%=  @thesis.title %>  </h2>
     <br/>
-  </head>
-  <body>
-    <%= render "layouts/header"%>
+   
     
      <div class="link">
        <p class="selector">Ver:
@@ -19,9 +16,7 @@
           <%= link_to "All      ", commitment_path(:id=>@thesis,  :comm_type=>'all')   %>
           <%= link_to "Closed   ", commitment_path(:id=>@thesis, :comm_type=>'closed') %>
        </p>
-
      </div>
-
     <table id="commitments">
       <tr>
         <th> Commitment </th>
@@ -48,4 +43,4 @@
        <br> <br>
        <%= link_to 'Regresar', thesis_path(:id =>@thesis.id, :id2 =>@teacher.id) %>
     </div>
-  </body>
+
