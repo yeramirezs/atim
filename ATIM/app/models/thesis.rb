@@ -13,7 +13,9 @@ class Thesis < ActiveRecord::Base
 
 	has_many :commitments
 
-	
+  has_many :recommendations
+
+
 
 
 end

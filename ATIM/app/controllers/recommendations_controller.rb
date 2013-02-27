@@ -40,7 +40,9 @@ class RecommendationsController < ApplicationController
   # POST /recommendations
   # POST /recommendations.json
   def create
+    @thesis = Thesis.find(params[:thesis_id])
     @recommendation = Recommendation.new(params[:recommendation])
+    @recommendation.thesis_id = @thesis.id
 
     respond_to do |format|
       if @recommendation.save
