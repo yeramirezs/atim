@@ -15,6 +15,8 @@ ATIM::Application.routes.draw do
 
   resources :recommendations
 
+
+
   resources :theses
 
   get "index/index"
