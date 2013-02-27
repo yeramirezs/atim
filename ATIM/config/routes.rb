@@ -13,6 +13,8 @@ ATIM::Application.routes.draw do
 
   get "commitments/close"
 
+  resources :recommendations
+
   resources :theses
 
   get "index/index"

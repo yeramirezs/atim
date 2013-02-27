@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(:version => 20130223204235) do
     t.datetime "fecha", :null => false
   end
 
+  create_table "recommendations", :force => true do |t|
+    t.string   "recommendation"
+    t.integer  "thesis_id"
+    t.date     "created"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "students", :force => true do |t|
     t.string   "name"
     t.string   "email"
