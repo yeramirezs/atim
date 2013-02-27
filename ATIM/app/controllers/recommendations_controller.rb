@@ -41,12 +41,13 @@ class RecommendationsController < ApplicationController
   # POST /recommendations.json
   def create
     @thesis = Thesis.find(params[:thesis_id])
+    @teacher = Teacher.find(@thesis.teacher_id)
     @recommendation = Recommendation.new(params[:recommendation])
     @recommendation.thesis_id = @thesis.id
 
     respond_to do |format|
       if @recommendation.save
-        format.html { redirect_to @recommendation, notice: 'Recommendation was successfully created.' }
+        format.html { redirect_to thesis_path(:id =>@thesis.id, :id2 =>@teacher.id), notice: 'Recommendation was successfully created.' }
         format.json { render json: @recommendation, status: :created, location: @recommendation }
       else
         format.html { render action: "new" }
