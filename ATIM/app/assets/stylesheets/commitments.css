@@ -60,6 +60,23 @@
     font-weight: bold;
 }
 
+.tabla td#s3
+{
+    text-align: center;
+    color: black;
+    background-color: orangered;
+    font-weight: bold;
+}
+
+.tabla td#s4
+{
+    text-align: center;
+    color: black;
+    background-color: lightyellow;
+    font-weight: bold;
+}
+
+
 *.link
 {
   text-align: center;

@@ -13,6 +13,12 @@ class CommitmentsController < ApplicationController
        query  = query << " and done = false"
     else if comm_type == 'closed' then
             query = query << " and done = true"
+         else if comm_type == 'overdue' then
+                 query = query << " and done = false and due_date <= NOW()"
+              else if comm_type == 'in2weeks' then
+                      query = query << " and done = false and NOW() between SUBDATE(due_date, 14) and due_date "
+                   end
+              end
          end
     end
     @commitments =  Commitment.where( query).sort_by( &:due_date)
