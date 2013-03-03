@@ -6,6 +6,17 @@ Given /^I visit a tesis with "([^\"]*)","([^\"]*)"$/ do |prof, tesis|
   visit "/theses/"+prof+"?id2="+tesis
 end
 
+
+When /^I list "(.*?)" commitments of thesis "([^\"]*)"$/ do |type, thesis|
+  visit "/commitments/" << thesis << "?comm_type=" << type
+end
+
+Then /^I close commitment "([^"]*)"$/ do |comm_id|
+  visit "/commitments/" << comm_id << "/edit"
+end
+
+
+
 When /^I enter with the username "([^\"]*)"$/ do |username|
   visit root_path
   fill_in('email', :with => username)
