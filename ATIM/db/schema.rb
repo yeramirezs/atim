@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(:version => 20130223204235) do
 
+  create_table "books", :force => true do |t|
+    t.string   "author"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "commitments", :force => true do |t|
     t.string   "title",                          :null => false
     t.text     "description"
@@ -25,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20130223204235) do
   create_table "meetings", :force => true do |t|
     t.string   "title", :null => false
     t.datetime "fecha", :null => false
+  end
+
+  create_table "recommendations", :force => true do |t|
+    t.string   "recommendation"
+    t.integer  "thesis_id"
+    t.date     "created"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "students", :force => true do |t|

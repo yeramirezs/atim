@@ -6,58 +6,147 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-  some_meetings    = Meeting.create([ {:title => "primera reunion", :fecha => "01/03/2012 8:30:00.0"},
-                                      {:title => "segunda reunion", :fecha => "03/04/2012 9:30:00.0"} ])
+  some_meetings    = Meeting.create([ {:title => "primera reunion", :fecha => "02/01/2013 8:30:00.0"},
+                                      {:title => "segunda reunion", :fecha => "03/02/2013 9:30:00.0"},
+                                      {:title => "tercera reunion", :fecha => "02/03/2013 9:30:00.0"} ])
 
-  some_commitments = Commitment.create([
-                      { :title => "revision de bibliografia",
-                        :description   => "Revision de las tesis de grado anteriores relacionadas con el tema",
-                        :thesis_id     => 1,
-                        :meeting_id    => 1,
-                        :due_date      => "10/10/2013 14:30:00.0",
-                        :done          => false},
+                 some_commitments = Commitment.create([
+                                       {
+                                        :title  => "Revision del trabajo de Hobbes",
+                                        :description  => "Revision del trabajo de Hobbes y la naturaleza de formacion de la riqueza",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "1",
+                                        :due_date  => "2013-03-10 09:30:00.0",
+                                        :done  => false },
 
-                       { :title => "capitulo 1",
-                         :description  => "Analisis de la economia de Walras",
-                         :thesis_id    => 1,
-                         :meeting_id   => 2,
-                         :due_date     => "2/1/2013 9:00:00.0",
-                         :done         => true},
+                                       {
+                                        :title  => "Revision de Smith",
+                                        :description  => "Revision del trabajo de A Smith y el libre mercado",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "1",
+                                        :due_date  => "2013-03-17 09:00:00.0",
+                                        :done  => true },
 
-                      { :title => "revision de bibliografia",
-                        :description   => "Revision de las tesis de grado anteriores relacionadas con el equilibrio",
-                        :thesis_id     => 1,
-                        :meeting_id    => 1,
-                        :due_date      => "10/10/2013 14:30:00.0",
-                        :done          => false},
+                                       {
+                                        :title  => "Revision de tesis anteriores",
+                                        :description  => "Revision de las tesis de grado anteriores relacionadas con el equilibrio economico",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "1",
+                                        :due_date  => "2013-02-05 14:30:00.0",
+                                        :done  => false },
 
-                      { :title => "capitulo 2",
-                          :description  => "Analisis de la economia de Stiglitz",
-                          :thesis_id    => 2,
-                          :meeting_id   => 2,
-                          :due_date     => "11/11/2013 8:30:00.0",
-                          :done         => false},
+                                       {
+                                        :title  => "Estudio de institucionalidad colombiana",
+                                        :description  => "Revision de la normatividad economica y fiscal colombiana",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "1",
+                                        :due_date  => "2013-03-31 14:30:00.0",
+                                        :done  => false },
 
-                      { :title => "revision de bibliografia",
-                        :description   => "Revision de las tesis de grado anteriores relacionadas con libre mercado",
-                        :thesis_id     => 2,
-                        :meeting_id    => 1,
-                        :due_date      => "3/3/2013 14:30:00.0",
-                        :done          => false},
+                                       {
+                                        :title  => "Estudio de la crisis del 98",
+                                        :description  => "Revision de la crisis economica de 1998 y las medidas adoptadas para conjurarla",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "1",
+                                        :due_date  => "2013-04-25 14:30:00.0",
+                                        :done  => false },
 
-                        { :title => "capitulo 3",
-                          :description  => "Analisis de la economia de A Smith",
-                          :thesis_id    => 3,
-                          :meeting_id   => 1,
-                          :due_date     => "7/7/2013 8:30:00.0",
-                          :done         => false},
+                                       {
+                                        :title  => "Identificacion de alternativas de modelos dinamicos",
+                                        :description  => "Identificacion de alternativas de modelos dinamicos, ventajas y desventajas",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-02-10 14:30:00.0",
+                                        :done  => false },
 
-                        { :title => "capitulo 3",
-                          :description  => "Analisis de la economia de Friedman",
-                          :thesis_id    => 3,
-                          :meeting_id   => 2,
-                          :due_date     => "9/9/2013 8:30:00.0",
-                          :done         => false}
+                                       {
+                                        :title  => "Estudio del equilibrio economico de Walras",
+                                        :description  => "Analisis de la economia de Walras",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-03-02 09:00:00.0",
+                                        :done  => true },
+
+                                       {
+                                        :title  => "Estudio de calculos numericos del equilibrio",
+                                        :description  => "Algoritmos para la computacion del equilibrio de Walras",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "3",
+                                        :due_date  => "2013-03-10 14:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Entendimiento de convergencia y precision del modelo",
+                                        :description  => "Perdida de fidelidad y convergencia del Newton Ralphson",
+                                        :thesis_id  => "1",
+                                        :meeting_id  => "3",
+                                        :due_date  => "2013-03-11 08:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis de creacion y destruccion de riqueza",
+                                        :description  => "Analisis de la economia de Stiglitz",
+                                        :thesis_id  => "2",
+                                        :meeting_id  => "1",
+                                        :due_date  => "2013-01-11 08:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis de Regulacion de mercados",
+                                        :description  => "Maximizacion de creacion de riqueza con mercados des-regulados segun Friedman",
+                                        :thesis_id  => "2",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-02-11 14:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis de desigualdades del mercado",
+                                        :description  => "Maximizacion de desigualdades en mercados no regulados, segun Stiglitz",
+                                        :thesis_id  => "2",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-03-01 08:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis de la intervencion del estado",
+                                        :description  => "Intervencion del estado y estabilidad economica",
+                                        :thesis_id  => "3",
+                                        :meeting_id  => "1",
+                                        :due_date  => "2013-03-19 08:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis de la superintendencia financiera",
+                                        :description  => "Funciones de la superintendencia financiera y la contraloria",
+                                        :thesis_id  => "3",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-03-11 08:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis del flujo de circulante",
+                                        :description  => "Funciones del banco de la republica y la disponibilidad de dinero",
+                                        :thesis_id  => "3",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-03-03 14:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis de las tasas de interes",
+                                        :description  => "El efecto de las tasas de interes sobre la creacion de empleo",
+                                        :thesis_id  => "3",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-03-07 08:30:00.0",
+                                        :done  => false },
+
+                                       {
+                                        :title  => "Analisis de importaciones y exportaciones",
+                                        :description  => "Analisis de la balanza comercial del pais y la formacion de capital",
+                                        :thesis_id  => "3",
+                                        :meeting_id  => "2",
+                                        :due_date  => "2013-03-09 08:30:00.0",
+                                        :done  => false }
+
                     ])
 
 some_teachers =   Teacher.create([ { :name =>"ahl", :email =>"ahl@uniandes.edu.co", :created_at =>"01/04/2012", :updated_at =>"01/05/2012"}])

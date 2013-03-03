@@ -1,5 +1,4 @@
-table
-{
+.tabla{
   margin: 10px;
   border-collapse:  collapse;
   width: 100%;
@@ -14,18 +13,20 @@ table
     background-color: royalblue;
 }
 
-table th
+.tabla th
 {
   border: 2px solid white;
   font-weight: bold;
   color: black;
   background-color: green;
 }
- table td#meeting
+
+ 
+ .tabla td#meeting
 {
     text-align: center;
 }
-table td
+.tabla td
 {
     padding: 4px;
     text-align: left;
@@ -34,30 +35,47 @@ table td
     background-color: whitesmoke;
     border-bottom: 2px antiquewhite;
 }
-table *.r0
+.tabla *.r0
 {
     color: black;
     background-color: powderblue;
 }
-table *.r1
+.tabla *.r1
 {
     color: black;
     background-color: white;
 }
-table td#s1
+.tabla td#s1
 {
     text-align: center;
     color: black;
     background-color: crimson;
     font-weight: bold;
 }
-table td#s2
+.tabla td#s2
 {
     text-align: center;
     color: black;
     background-color: palegreen;
     font-weight: bold;
 }
+
+.tabla td#s3
+{
+    text-align: center;
+    color: black;
+    background-color: orangered;
+    font-weight: bold;
+}
+
+.tabla td#s4
+{
+    text-align: center;
+    color: black;
+    background-color: lightyellow;
+    font-weight: bold;
+}
+
 
 *.link
 {

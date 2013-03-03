@@ -38,6 +38,9 @@
 						    <ul class="nav nav-tabs">
 							    <li class="active"><a href="#tab1" data-toggle="tab">Estado de Tesis</a></li>
 							    <li><a href="#tab2" data-toggle="tab">Nuevo Estudiante</a></li>
+                              <% if @thesis.state!='Inactiva' %>
+                                <li><a href="#tab6" data-toggle="tab">Recomendaciones</a></li>
+                              <% end %>
 							    <li><a href="#tab3" data-toggle="tab">Nueva Reunion</a></li>
 							    <li><a href="#tab4" data-toggle="tab">Consultar Estudiantes</a></li>
 							    <li><a href="#tab5" data-toggle="tab">Consultar Reuniones</a></li>
@@ -46,7 +49,7 @@
 						    <div class="tab-content">
 							    <div class="tab-pane active" id="tab1">
 							    	<table width="100%">
-							    		
+
 							    		<%= form_tag comenzar_path(:email=>@teacher.email,:id=>@thesis.id), :method => 'post' do %>
 								    		<tr>
 									    		<td><b>Descripción:</b><br><%= @thesis.state %></td>
@@ -90,7 +93,7 @@
 									    <%= f.submit "Asignar", class: "btn"%>
 									  </div>
 									<% end %>
-								    
+
 							    </div>
 							    <div class="tab-pane" id="tab3">
 								    <p>Nueva reunion.</p>
@@ -113,8 +116,31 @@
 									</table>
 							    </div>
 							    <div class="tab-pane" id="tab5">
-								    <p>Buesqueda reuniones</p>
+
 							    </div>
+                                <div class="tab-pane" id="tab6">
+                                  <table>
+                                  <% @thesis.recommendations.each do |recommendation| %>
+                                      <tr>
+                                        <td><i>El <%= recommendation.created_at  %></i>:<br /><%= recommendation.recommendation %></td>
+                                      </tr>
+                                  <% end %>
+                                  </table>
+                                    <b>Nueva recomendación:</b>
+                                    <table>
+                                      <tr>
+                                        <td><b>Recomendación</b></td>
+                                        <%= form_for :recommendation, :url=>{:thesis_id=>@thesis.id, :recomendation=>:recommendation, :controller=>"recommendations", :action=>"create"}, :method => "post" do |f| %>
+                                            <div class="field">
+                                              <%= f.text_field :recommendation, :placeholder => 'New Recommendation' %>
+                                            </div>
+                                            <div class="actions">
+                                              <%= f.submit "Enviar", class: "btn"%>
+                                            </div>
+                                        <% end %>
+                                      </tr>
+                                    </table>
+                                </div>
                             </div>
 						</div>
 					</td>
