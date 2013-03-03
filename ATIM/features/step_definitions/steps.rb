@@ -3,13 +3,26 @@ Given /^I am on "([^\"]*)"$/ do |page_name|
 end
 
 Given /^I visit a tesis with "([^\"]*)","([^\"]*)"$/ do |prof, tesis|
-   visit "/theses/"+prof+"?id2="+tesis
+  visit "/theses/"+prof+"?id2="+tesis
 end
 
 When /^I enter with the username "([^\"]*)"$/ do |username|
   visit root_path
   fill_in('email', :with => username)
   click_button("Login")
+end
+
+
+Then(/^I should see  "(.*?)"$/) do |text|
+  page.should have_content(text)
+end
+
+Then(/^I select thesis "(.*?)" and press "([^\"]*)"$/) do |id, link|
+  visit "1?id2="+id
+end
+
+Then /^I click "([^\"]*)"$/ do |link|
+  click_link link
 end
 
 Then /^I press "([^\"]*)"$/ do |link|
@@ -26,9 +39,6 @@ Then /^press "([^\"]*)"$/ do |text|
   click_button(text)
 end
 
-Then /^I should see "([^\"]*)"$/ do |text|
-  page.should have_content(text)
-end
 
 Then /^I should be on (.+)$/ do |page_name|
   current_path.should == "/"+page_name
