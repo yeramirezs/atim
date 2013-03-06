@@ -6,11 +6,32 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+  some_sources     = Source.create([
+                                    {:title    => "Stiglitz2012",
+                                     :citation => "The Price of Inequality: How Today's Divided Society Endangers Our Future," <<
+                                                  " W. W. Norton & Company.El precio de la desigualdad, Taurus, ISBN 978-84-30600694.",
+                                     :url      => "http://books.wwnorton.com/books/The-Price-of-Inequality"
+                                    },
+                                    {:title    => "Walras1896",
+                                     :citation => "Walras, Leon (1896): Estudios de Economia Social, Segunda Seccion: " <<
+                                                  "Vuotto, Mirta (compiladora) Economia Social," <<
+                                                  "Precisiones Conceptuales y Algunas Experiencias Historicas: 17-36." <<
+                                                  "Buenos Aires: Editorial Altamira, 2003.",
+                                     :url      => ""
+                                    },
+                                    {:title    => "Gale1972",
+                                     :citation => "Pure exchange equilibrium of dynamic economic models. " <<
+                                                  "Department of Industrial Engineering, Operations Research" <<
+                                                  "University of California, Berkeley, 1972",
+                                     :url      => "http://www.karlshell.com/www/pdfs/gale73.pdf"
+                                    }
+                                   ])
+
   some_meetings    = Meeting.create([ {:title => "primera reunion", :fecha => "02/01/2013 8:30:00.0"},
                                       {:title => "segunda reunion", :fecha => "03/02/2013 9:30:00.0"},
                                       {:title => "tercera reunion", :fecha => "02/03/2013 9:30:00.0"} ])
 
-                 some_commitments = Commitment.create([
+  some_commitments = Commitment.create([
                                        {
                                         :title  => "Revision del trabajo de Hobbes",
                                         :description  => "Revision del trabajo de Hobbes y la naturaleza de formacion de la riqueza",

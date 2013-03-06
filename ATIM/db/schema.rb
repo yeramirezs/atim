@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223204235) do
+ActiveRecord::Schema.define(:version => 20130306120141) do
+
+  create_table "sources", :force => true do |s|
+    s.string   "title",       :null => false
+    s.text     "citation",    :null => false
+    s.string   "url"          :null => true
+  end
 
   create_table "commitments", :force => true do |t|
     t.string   "title",                          :null => false
