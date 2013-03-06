@@ -2,6 +2,9 @@ ATIM::Application.routes.draw do
 
   resources :students
 
+  match 'sources/:id'    =>  'sources#search'
+  resources :sources
+
   match 'commitments/:id' => 'commitments#search'
   match 'commitments/:id/edit' => 'commitments#close'
 
@@ -13,9 +16,8 @@ ATIM::Application.routes.draw do
 
   get "commitments/close"
 
+
   resources :recommendations
-
-
 
   resources :theses
 
