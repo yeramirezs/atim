@@ -12,7 +12,7 @@
     				    <ul class="nav nav-list">
 					    <li class="nav-header">Options</li>
 					    <li class="active"><%= link_to "Home", index_path(:email=>@student.email), :post => true%></li>
-					    <li>nada</li>
+					    <li><%= link_to "Consultar compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
 					    </ul>
     				</td>
     				<tr><td>&nbsp;</td></tr>
@@ -24,14 +24,16 @@
 	    <td width="75%">
 	    	<table>
 	    		<tr>
-	    			<td><h1>Tesis</h1></td>
-	    		</tr>
-				<tr>
-				    <td><%= @thesis.title %></td>
-				    <td width="10px">
-				    </td>
-				    <td><%= link_to 'Show', thesis_path(:id =>@thesis.id, :id2 =>@student.id) %></td>
+				    <td><b>Título de la tesis:</b><br><%= @thesis.title %><br></td>
 				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				    <td><b>Descripción:</b><br><%= @thesis.description %></td>
+				</tr> 
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				    <td><b>Estado:</b><br><%= @thesis.state %></td>
+				</tr> 
     		</table>
 	  	</td>
    </tr>
