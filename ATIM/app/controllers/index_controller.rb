@@ -6,10 +6,17 @@ class IndexController < ApplicationController
   		redirect_to root_path
   	else
   		@teacher = Teacher.search(params[:email])
+      @student = Student.search(params[:email])
   		if(!@teacher)
-  			flash[:notice] = "No ingreso un usuario valido"
-  			redirect_to root_path
+
+  			if(!@student)
+          flash[:notice] = "No ingreso un usuario valido"
+          redirect_to root_path
+        else
+          redirect_to indexUsuario_path(:email=>params[:email])
+        end 
   		end
+      
   	end
 
   end
@@ -32,5 +39,10 @@ class IndexController < ApplicationController
           redirect_to index_path(:email=>params[:email])
       end
     end
+  end
+
+  def indexUsuario
+    @student = Student.search(params[:email])
+    @thesis = Thesis.find(@student.thesis_id)
   end
 end

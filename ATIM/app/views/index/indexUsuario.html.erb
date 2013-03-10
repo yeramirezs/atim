@@ -1,0 +1,48 @@
+<%= render "layouts/headerStudent"%>
+<table width="100%"  style="left:0px;">
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+    <tr>
+    	<td width="20%" valign="top" align="center">
+    		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="70%">
+    			<tr>
+    				<td>
+    				    <ul class="nav nav-list">
+					    <li class="nav-header">Options</li>
+					    <li class="active"><%= link_to "Home", index_path(:email=>@student.email), :post => true%></li>
+					    <li>nada</li>
+					    </ul>
+    				</td>
+    				<tr><td>&nbsp;</td></tr>
+    				<tr><td>&nbsp;</td></tr>
+    			</tr>
+    		</table>
+
+    	</td>
+	    <td width="75%">
+	    	<table>
+	    		<tr>
+	    			<td><h1>Tesis</h1></td>
+	    		</tr>
+				<tr>
+				    <td><%= @thesis.title %></td>
+				    <td width="10px">
+				    </td>
+				    <td><%= link_to 'Show', thesis_path(:id =>@thesis.id, :id2 =>@student.id) %></td>
+				</tr>
+    		</table>
+	  	</td>
+   </tr>
+</table>
+<table>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+  <tr><td colspan="2">
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+  </td></tr>
+</table>
+
