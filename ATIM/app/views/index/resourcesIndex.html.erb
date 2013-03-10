@@ -1,0 +1,64 @@
+<%= render "layouts/headerStudent"%>
+<table width="100%"  style="left:0px;">
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+    <tr>
+    	<td width="20%" valign="top" align="center">
+    		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="70%">
+    			<tr>
+    				<td>
+    				    <ul class="nav nav-list">
+					    <li class="nav-header">Options</li>
+					    <li class="active"><%= link_to "Home", index_path(:email=>@student.email), :post => true%></li>
+					    <li><%= link_to "Estado del arte", resourcesIndex_path(:id=>@thesis) %></li>
+					    <li><%= link_to "Consultar compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
+					    </ul>
+    				</td>
+    				<tr><td>&nbsp;</td></tr>
+    				<tr><td>&nbsp;</td></tr>
+    			</tr>
+    		</table>
+
+    	</td>
+	    <td width="75%">
+	        <%= stylesheet_link_tag 'sources.css.scss', :media => 'screen' %>
+	        <h2 class="center">Fuentes de investigación de la tesis</h2>
+	        <br/>
+	        <h2 class="center"> <%= @thesis_id %> -  <%=  @thesis.title %>  </h2>
+	        <br/>
+
+	        <table id="sources" class="tabla">
+	          <tr>
+	            <th> Source </th>
+	            <th> Citation </th>
+	            <th> URL </th>
+	          </tr>
+	          <% even = 1 %>
+	          <% @sources.each do |c| %>
+	              <tr>
+	                <td class="r<%=even.to_s%>"><%= c.title %> </td>
+	                <td class="r<%=even.to_s%>"><%= c.citation %> </td>
+	                <td class="r<%=even.to_s%>"><%= c.url %> </td>
+	              </tr>
+	              <% even = (even + 1) % 2 %>
+	          <% end %>
+	        </table>
+	        <div class="link">
+	           <br> <br>
+	           <%= link_to 'Regresar', indexUsuario_path(:email =>@student.email), class: "btn btn-large btn-primary"%>
+	        </div>
+	  	</td>
+   </tr>
+</table>
+<table>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td>&nbsp;</td></tr>
+  <tr><td colspan="2">
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+  </td></tr>
+</table>
+

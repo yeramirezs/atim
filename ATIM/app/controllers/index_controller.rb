@@ -45,4 +45,10 @@ class IndexController < ApplicationController
     @student = Student.search(params[:email])
     @thesis = Thesis.find(@student.thesis_id)
   end
+
+  def resourcesIndex
+    @student = Student.search(params[:email])
+    @thesis = Thesis.find(@student.thesis_id)
+    @sources   = Source.where( @thesis_id).sort_by( &:title)
+  end
 end
