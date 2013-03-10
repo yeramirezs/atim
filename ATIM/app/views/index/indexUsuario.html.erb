@@ -12,6 +12,7 @@
     				    <ul class="nav nav-list">
 					    <li class="nav-header">Options</li>
 					    <li class="active"><%= link_to "Home", index_path(:email=>@student.email), :post => true%></li>
+					    <li><%= link_to "Estado del arte", resourcesIndex_path(:id=>@thesis) %></li>
 					    <li><%= link_to "Consultar compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
 					    </ul>
     				</td>
