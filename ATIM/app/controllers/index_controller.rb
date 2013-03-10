@@ -51,4 +51,8 @@ class IndexController < ApplicationController
     @thesis = Thesis.find(@student.thesis_id)
     @sources   = Source.where( @thesis_id).sort_by( &:title)
   end
+
+  def commitments 
+
+  end
 end

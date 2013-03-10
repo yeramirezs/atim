@@ -35,8 +35,17 @@
 				<tr>
 				    <td><b>Estado:</b><br><%= @thesis.state %></td>
 				</tr> 
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				    <td><b>Recomendaciones:</b></td>
+				</tr> 
+				<% @thesis.recommendations.each do |recommendation| %>
+	              <tr>
+	                <td><i>El <%= recommendation.created_at  %></i>:&nbsp;&nbsp;&nbsp;<%= recommendation.recommendation %></td>
+	              </tr>
+	          	<% end %>
     		</table>
-	  	</td>
+	    </td>
    </tr>
 </table>
 <table>
