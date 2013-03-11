@@ -124,10 +124,10 @@
                                       </tr>
                                   <% end %>
                                   </table>
+                              	  </br>
                                     <b>Nueva recomendación:</b>
                                     <table>
                                       <tr>
-                                        <td><b>Recomendación</b></td>
                                         <%= form_for :recommendation, :url=>{:thesis_id=>@thesis.id, :action=>"create"}, :method => "post", :html=> {:multipart=>true} do |f| %>
                                             <div class="field">
                                               <%= f.text_field :recommendation, :placeholder => 'New Recommendation' %>
