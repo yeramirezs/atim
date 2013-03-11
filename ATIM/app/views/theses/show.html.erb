@@ -37,12 +37,11 @@
 						 <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
 						    <ul class="nav nav-tabs">
 							    <li class="active"><a href="#tab1" data-toggle="tab">Estado de Tesis</a></li>
-							    <li><a href="#tab2" data-toggle="tab">Nuevo Estudiante</a></li>
+							    <li><a href="#tab2" data-toggle="tab">Estudiantes</a></li>
                               <% if @thesis.state!='Inactiva' %>
                                 <li><a href="#tab6" data-toggle="tab">Recomendaciones</a></li>
                               <% end %>
 							    <li><a href="#tab3" data-toggle="tab">Nueva Reunion</a></li>
-							    <li><a href="#tab4" data-toggle="tab">Consultar Estudiantes</a></li>
 							    <li><a href="#tab5" data-toggle="tab">Consultar Reuniones</a></li>
                                 <li><a href="#tab7" data-toggle="tab">Entregables</a></li>
                                 <li><%= link_to "Consultar compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
@@ -95,12 +94,6 @@
 									    <%= f.submit "Asignar", class: "btn"%>
 									  </div>
 									<% end %>
-
-							    </div>
-							    <div class="tab-pane" id="tab3">
-								    <p>Nueva reunion.</p>
-							    </div>
-							    <div class="tab-pane" id="tab4">
 								    <b>Lista de estudiantes</b>
 								    <table>
 								    	<tr>
@@ -116,6 +109,9 @@
 										  </tr>
 										<% end %>
 									</table>
+							    </div>
+							    <div class="tab-pane" id="tab3">
+								    <p>Nueva reunion.</p>
 							    </div>
 							    <div class="tab-pane" id="tab5">
 
