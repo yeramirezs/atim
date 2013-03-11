@@ -6,19 +6,7 @@
 	<tr><td>&nbsp;</td></tr>
     <tr>
     	<td width="20%" valign="top" align="center">
-    		<table  style="background-color:#E6E6E6; border-radius: 15px;" width="70%">
-    			<tr>
-    				<td>
-    				    <ul class="nav nav-list">
-					    <li class="nav-header">Options</li>
-					    <li class="active"><%= link_to "Home", index_path(:email=>@teacher.email), :post => true%></li>
-					    <li><%= link_to "Crear Tesis", new_thesis_path(:id=>@teacher.id) %></li>
-					    </ul>
-    				</td>
-    				<tr><td>&nbsp;</td></tr>
-    				<tr><td>&nbsp;</td></tr>
-    			</tr>
-    		</table>
+    		<%= render "layouts/menuStudent"%>
 
     	</td>
 	    <td width="75%">
