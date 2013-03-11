@@ -44,6 +44,7 @@
 							    <li><a href="#tab3" data-toggle="tab">Nueva Reunion</a></li>
 							    <li><a href="#tab4" data-toggle="tab">Consultar Estudiantes</a></li>
 							    <li><a href="#tab5" data-toggle="tab">Consultar Reuniones</a></li>
+                                <li><a href="#tab7" data-toggle="tab">Entregables</a></li>
                                 <li><%= link_to "Consultar compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
                                 <li><%= link_to "Listar fuentes", source_path(:id=>@thesis) %></li>
 							</ul>
@@ -131,7 +132,7 @@
                                     <table>
                                       <tr>
                                         <td><b>Recomendación</b></td>
-                                        <%= form_for :recommendation, :url=>{:thesis_id=>@thesis.id, :recomendation=>:recommendation, :controller=>"recommendations", :action=>"create"}, :method => "post" do |f| %>
+                                        <%= form_for :recommendation, :url=>{:thesis_id=>@thesis.id, :action=>"create"}, :method => "post", :html=> {:multipart=>true} do |f| %>
                                             <div class="field">
                                               <%= f.text_field :recommendation, :placeholder => 'New Recommendation' %>
                                             </div>
@@ -142,6 +143,40 @@
                                       </tr>
                                     </table>
                                 </div>
+
+                              <div class="tab-pane" id="tab7">
+                                <table>
+                                  <% @thesis.deliverables.each do |deliverable| %>
+                                      <tr>
+                                        <td><i>El <%= deliverable.created_at  %></i>:<br /><%= deliverable.title %></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Archivo:<br /><%= deliverable.file_name %></td>
+
+                                      </tr>
+                                  <% end %>
+                                </table>
+                                <b>Nuevo entregable:</b>
+                                <table>
+                                  <tr>
+                                    <td><b>Entregable</b></td>
+                                    <%= form_for :deliverable, :url=>{:thesis_id=>@thesis.id, :controller=>"deliverables", :action=>"create"}, :method => "post" do |f| %>
+                                        <div class="field">
+                                          <%= f.text_field :title, :placeholder => 'Title' %>
+                                        </div>
+                                        <div class="field">
+                                          <%= f.file_field :file_name, :placeholder => 'File' %>
+                                        </div>
+                                        <div class="field">
+                                          <%= f.text_field :description, :placeholder => 'Description' %>
+                                        </div>
+                                        <div class="actions">
+                                          <%= f.submit "Enviar", class: "btn"%>
+                                        </div>
+                                    <% end %>
+                                  </tr>
+                                </table>
+                              </div>
                             </div>
 						</div>
 					</td>

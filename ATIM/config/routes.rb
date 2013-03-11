@@ -1,5 +1,8 @@
 ATIM::Application.routes.draw do
 
+  resources :deliverables
+
+
   resources :students
 
   match 'sources/:id'    =>  'sources#search'

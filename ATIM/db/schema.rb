@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306150701) do
+ActiveRecord::Schema.define(:version => 20130311050645) do
 
   create_table "commitments", :force => true do |t|
     t.string   "title",                          :null => false
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20130306150701) do
     t.integer  "meeting_id",                     :null => false
     t.datetime "due_date",                       :null => false
     t.boolean  "done",        :default => false
+  end
+
+  create_table "deliverables", :force => true do |t|
+    t.string   "title"
+    t.integer  "thesis_id"
+    t.string   "description"
+    t.string   "file_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "meetings", :force => true do |t|
