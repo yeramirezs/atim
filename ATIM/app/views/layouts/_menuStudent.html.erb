@@ -3,13 +3,13 @@
 		<td>
 		    <ul class="nav nav-list">
 		    <li class="nav-header">Options</li>
-		    <li class="active"><%= link_to "Home", index_path(:email=>@student.email), :post => true%></li>
+		    <li class="<%= (request.url.include? "indexStudent") ? "active" : "" %>"><%= link_to "Home", index_path(:email=>@student.email), :post => true%></li>
 		    <li class="divider"></li>
-		    <li><%= link_to "Estado del arte", resourcesIndex_path(:email=>@student.email) %></li>
+		    <li class="<%= (request.url.include? "stateOfArt") ? "active" : "" %>"><%= link_to "Estado del arte", resourcesIndex_path(:email=>@student.email) %></li>
 		    <li class="divider"></li>
-		    <li><%= link_to "Compromisos", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'open') %></li>
+		    <li class="<%= (request.url.include? "commitmentsStudent") ? "active" : "" %>"><%= link_to "Compromisos", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'open') %></li>
 		    <li class="divider"></li>
-		    <li><%= link_to "Entregables de Tesis", indexDeliverable_path(:email=>@student.email) %></li>
+		    <li class="<%= (request.url.include? "entregas") ? "active" : "" %>"><%= link_to "Entregables de Tesis", indexDeliverable_path(:email=>@student.email) %></li>
 		    </ul>
 		</td>
 		<tr><td>&nbsp;</td></tr>
