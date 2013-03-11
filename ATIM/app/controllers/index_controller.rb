@@ -52,6 +52,11 @@ class IndexController < ApplicationController
     @sources   = Source.where( @thesis_id).sort_by( &:title)
   end
 
+  def indexDeliverable
+    @student = Student.search(params[:email])
+    @thesis = Thesis.find(@student.thesis_id)
+    @sources   = Source.where( @thesis_id).sort_by( &:title)
+  end
   def commitments 
 
   end

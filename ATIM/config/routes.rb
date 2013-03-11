@@ -35,6 +35,7 @@ ATIM::Application.routes.draw do
   root  to: 'home#login'
 
   match '/indexStudent', to: 'index#indexUsuario', :as => 'indexUsuario'
+  match '/entregas', to: 'index#indexDeliverable', :as => 'indexDeliverable'
   match '/stateOfArt', to: 'index#resourcesIndex', :as => 'resourcesIndex'
   match '/signup', to: 'teachers#new', :as => 'signup'
   match '/index', to: 'index#index', :as => 'index'
