@@ -57,7 +57,25 @@ class IndexController < ApplicationController
     @thesis = Thesis.find(@student.thesis_id)
     @sources   = Source.where( @thesis_id).sort_by( &:title)
   end
-  def commitments 
 
+  def commitments 
+    @thesis_id = params[:id]
+    @student = Student.search(params[:email])
+    @thesis = Thesis.find(@student.thesis_id)
+    query = 'thesis_id = ' << @thesis_id
+    comm_type = params[:comm_type]
+    if comm_type == 'open' then
+       query  = query << " and done = false"
+    else if comm_type == 'closed' then
+            query = query << " and done = true"
+         else if comm_type == 'overdue' then
+                 query = query << " and done = false and due_date <= NOW()"
+              else if comm_type == 'in2weeks' then
+                      query = query << " and done = false and NOW() between SUBDATE(due_date, 14) and due_date "
+                   end
+              end
+         end
+    end
+    @commitments =  Commitment.where( query).sort_by( &:due_date)
   end
 end

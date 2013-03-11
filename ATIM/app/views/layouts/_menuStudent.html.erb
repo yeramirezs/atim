@@ -7,7 +7,7 @@
 		    <li class="divider"></li>
 		    <li><%= link_to "Estado del arte", resourcesIndex_path(:email=>@student.email) %></li>
 		    <li class="divider"></li>
-		    <li><%= link_to "Compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
+		    <li><%= link_to "Compromisos", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'open') %></li>
 		    <li class="divider"></li>
 		    <li><%= link_to "Entregables de Tesis", indexDeliverable_path(:email=>@student.email) %></li>
 		    </ul>

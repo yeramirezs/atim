@@ -1,7 +1,7 @@
 .tabla{
   margin: 10px;
   border-collapse:  collapse;
-  width: 100%;
+  width: 95%;
 }
 #commitments th
 {
@@ -133,6 +133,6 @@
     font-weight:bold;
     color:black;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
 }
 
