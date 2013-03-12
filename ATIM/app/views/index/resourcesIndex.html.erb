@@ -8,47 +8,29 @@
     	<td width="20%" valign="top" align="center">
     		<%= render "layouts/menuStudent"%>
     	</td>
-	    <td width="75%">
-	    	<table>
-	    		<tr><td colspan="2">
-	    		<div class="tabbable">
-	    			<ul class="nav nav-tabs nav-stacked">
-		          	<% @sources.each do |c| %>
-					    <li><a href="#<%= c.id %>" data-toggle="tab"><%= c.title %></a></li>
-					 <% end %>
-					</ul>
-					<div class="tab-content">
-					<% @sources.each do |c| %> 
-					    <div class="tab-pane" id="<%= c.id %>" >
-						    <%= c.citation %>
-						    <%= c.url %>
-					    </div>
-					
-		          	<% end %>
-		          	</div>
-		         </div>
-				</td></tr>
-			</table>
-			
-	        <%= stylesheet_link_tag 'sources.css.scss', :media => 'screen' %>
-	        <h1 class="center">Fuentes de investigación de la tesis</h1>
+	    <td width="75%" valign="top">
 	        <br/>
-	        <table id="sources" class="tabla" with="80%">
-	          <tr>
-	            <th> Source </th>
-	            <th> Citation </th>
-	            <th> URL </th>
-	          </tr>
-	          <% even = 1 %>
-	          <% @sources.each do |c| %>
-	              <tr>
-	                <td class="r<%=even.to_s%>"><%= c.title %> </td>
-	                <td class="r<%=even.to_s%>"><%= c.citation %> </td>
-	                <td class="r<%=even.to_s%>"><%= c.url %> </td>
-	              </tr>
-	              <% even = (even + 1) % 2 %>
-	          <% end %>
-	        </table>
+			<table id="report" width="45%">
+		        <tr>
+		        	<h1 class="center">Fuentes de investigación de la tesis</h1>
+		        </tr>
+		        <% @sources.each do |c| %>
+		        <tr>
+		            <td><%= c.title %></td>
+		            <td align="right"><div class="arrow"></div></td>
+		        </tr>
+		        
+		        <tr>
+		            <td colspan="5">
+		                <h4>Additional information</h4>
+		                <ul>
+		                    <h4>Url</h4><%= c.url %></br>	
+		                    <h4>Citation</h4><%= c.citation %>	
+		                 </ul>   
+		            </td>
+		        </tr>
+		        <% end %>
+		    </table>
 	  	</td>
    </tr>
 </table>
@@ -61,4 +43,18 @@
     <% end %>
   </td></tr>
 </table>
+</body>
+<script type="text/javascript">  
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.odd)").hide();
+            $("#report tr:first-child").show();
+            
+            $("#report tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#report").jExpand();
+        });
+    </script> 
 
