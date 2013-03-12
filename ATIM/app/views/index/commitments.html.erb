@@ -14,11 +14,11 @@
 	        <br/>
 	        <div class="link">
 	         <p class="selector">Select Status:
-	            <%= link_to "Open   |   ", commitment_path(:id=>@thesis, :comm_type=>'open')    %>
-	            <%= link_to "All    |   ", commitment_path(:id=>@thesis, :comm_type=>'all')     %>
-	           <%= link_to "Closed  |   ", commitment_path(:id=>@thesis, :comm_type=>'closed')  %>
-	           <%= link_to "Overdue |   ", commitment_path(:id=>@thesis, :comm_type=>'overdue') %>
-	           <%= link_to "Due in 2 weeks", commitment_path(:id=>@thesis, :comm_type=>'in2weeks') %>
+	            <%= link_to "Open   |   ", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'open')    %>
+	            <%= link_to "All    |   ", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'all')     %>
+	           <%= link_to "Closed  |   ", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'closed') %>
+	           <%= link_to "Overdue |   ", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'overdue') %>
+	           <%= link_to "Due in 2 weeks", commitmentsStudent_path(:email=>@student.email,:id=>@thesis, :comm_type=>'in2weeks') %>
 	         </p>
 	        </div>
 	        <table id="commitments" class="tabla">

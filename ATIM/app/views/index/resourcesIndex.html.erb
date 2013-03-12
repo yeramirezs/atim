@@ -9,10 +9,9 @@
     		<%= render "layouts/menuStudent"%>
     	</td>
 	    <td width="75%" valign="top">
-	        <br/>
-			<table id="report" width="45%">
-		        <tr>
-		        	<h1 class="center">Fuentes de investigación de la tesis</h1>
+			<table id="report" width="55%">
+		        <tr >
+		        	<h1>Fuentes de investigación de la tesis</h1></br>
 		        </tr>
 		        <% @sources.each do |c| %>
 		        <tr>
@@ -22,11 +21,13 @@
 		        
 		        <tr>
 		            <td colspan="5">
-		                <h4>Additional information</h4>
 		                <ul>
 		                    <h4>Url</h4><%= c.url %></br>	
-		                    <h4>Citation</h4><%= c.citation %>	
-		                 </ul>   
+		                    
+		                 </ul> 
+		                  <ul>
+		                 	<h4>Citation</h4><%= c.citation %>	
+		                 </ul>  
 		            </td>
 		        </tr>
 		        <% end %>
