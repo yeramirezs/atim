@@ -38,7 +38,7 @@
               <tr>
                 <td class="r<%=even.to_s%>"><%= c.title %> </td>
                 <td class="r<%=even.to_s%>"><%= c.citation %> </td>
-                <td class="r<%=even.to_s%>"><%= c.url %> </td>
+                <td class="r<%=even.to_s%>"><a href="<%=c.url%>"><%=c.url %> </a> </td>
               </tr>
               <% even = (even + 1) % 2 %>
           <% end %>

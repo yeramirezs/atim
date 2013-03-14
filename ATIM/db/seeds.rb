@@ -7,25 +7,43 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
   some_sources     = Source.create([
-                                    {:title    => "Stiglitz2012",
+                                    {:thesis_id =>  1,
+                                     :title    => "Stiglitz2012",
                                      :citation => "The Price of Inequality: How Today's Divided Society Endangers Our Future," <<
                                                   " W. W. Norton & Company.El precio de la desigualdad, Taurus, ISBN 978-84-30600694.",
                                      :url      => "http://books.wwnorton.com/books/The-Price-of-Inequality"
                                     },
-                                    {:title    => "Walras1896",
+                                    {:thesis_id =>  1,
+                                     :title    => "Walras1896",
                                      :citation => "Walras, Leon (1896): Estudios de Economia Social, Segunda Seccion: " <<
                                                   "Vuotto, Mirta (compiladora) Economia Social," <<
                                                   "Precisiones Conceptuales y Algunas Experiencias Historicas: 17-36." <<
                                                   "Buenos Aires: Editorial Altamira, 2003.",
                                      :url      => ""
                                     },
-                                    {:title    => "Gale1972",
+                                    {:thesis_id =>  1,
+                                     :title    => "Gale1972",
                                      :citation => "Pure exchange equilibrium of dynamic economic models. " <<
                                                   "Department of Industrial Engineering, Operations Research" <<
                                                   "University of California, Berkeley, 1972",
                                      :url      => "http://www.karlshell.com/www/pdfs/gale73.pdf"
+                                    },
+                                    {:thesis_id =>  2,
+                                     :title    => "Debreu1959",
+                                     :citation => "Theory of Value: An Axiomatic Analysis of Economic Equilibrium" <<
+                                         " formal analysis of producer behavior, consumer behavior, general equilibrium," <<
+                                         " and the optimality of the market mechanism for resource allocation" <<
+                                         "University of Yale, New Haven, 1959",
+                                     :url      => "http://books.google.com"
+                                    } ,
+                                    {:thesis_id =>  3,
+                                     :title    => "Stiglitz1981",
+                                     :citation => "Theory of Commodity Price Stabilization" <<
+                                          " by David M.G. Newbery and Joseph E. Stiglitz ISBN 0198284179 ISBN 978-0198284178,  " <<
+                                          " Oxford University Press [Hardcover: 512 pages]",
+                                     :url      => ""
                                     }
-                                   ])
+                                  ])
 
   some_meetings    = Meeting.create([ {:title => "primera reunion", :fecha => "02/01/2013 8:30:00.0"},
                                       {:title => "segunda reunion", :fecha => "03/02/2013 9:30:00.0"},

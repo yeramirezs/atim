@@ -49,7 +49,7 @@ class IndexController < ApplicationController
   def resourcesIndex
     @student = Student.search(params[:email])
     @thesis = Thesis.find(@student.thesis_id)
-    @sources   = Source.where( @thesis_id).sort_by( &:title)
+    @sources   = Source.where( 'thesis_id=' << @thesis.id.to_s).sort_by( &:title)
   end
 
   def indexDeliverable
