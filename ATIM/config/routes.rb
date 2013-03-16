@@ -2,21 +2,21 @@ ATIM::Application.routes.draw do
 
   resources :deliverables
 
-
   resources :students
 
-  match 'sources/:id'    =>  'sources#search'
+  get 'sources/:id'         => 'sources#search'
+  get 'sources/:id/edit'    => 'sources#analysis'
+  put 'sources/update'      => 'sources#update'
+
   resources :sources
 
-  match 'commitments/:id' => 'commitments#search'
+  match 'commitments/:id'      => 'commitments#search'
   match 'commitments/:id/edit' => 'commitments#close'
 
   resources :commitments
 
   get "commitments/create"
-
   get "commitments/edit"
-
   get "commitments/close"
 
 

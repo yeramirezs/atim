@@ -5,6 +5,7 @@ class CreateSources < ActiveRecord::Migration
       s.string   "title",       :null => false
       s.text     "citation",    :null => false
       s.string   "url",         :null => true
+      s.text     "analysis",    :null => true
     end
   end
 

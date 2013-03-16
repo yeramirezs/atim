@@ -11,7 +11,8 @@
                                      :title    => "Stiglitz2012",
                                      :citation => "The Price of Inequality: How Today's Divided Society Endangers Our Future," <<
                                                   " W. W. Norton & Company.El precio de la desigualdad, Taurus, ISBN 978-84-30600694.",
-                                     :url      => "http://books.wwnorton.com/books/The-Price-of-Inequality"
+                                     :url      => "http://books.wwnorton.com/books/The-Price-of-Inequality",
+                                     :analysis => ""
                                     },
                                     {:thesis_id =>  1,
                                      :title    => "Walras1896",
@@ -19,14 +20,16 @@
                                                   "Vuotto, Mirta (compiladora) Economia Social," <<
                                                   "Precisiones Conceptuales y Algunas Experiencias Historicas: 17-36." <<
                                                   "Buenos Aires: Editorial Altamira, 2003.",
-                                     :url      => ""
+                                     :url      => "",
+                                     :analysis => ""
                                     },
                                     {:thesis_id =>  1,
                                      :title    => "Gale1972",
                                      :citation => "Pure exchange equilibrium of dynamic economic models. " <<
                                                   "Department of Industrial Engineering, Operations Research" <<
                                                   "University of California, Berkeley, 1972",
-                                     :url      => "http://www.karlshell.com/www/pdfs/gale73.pdf"
+                                     :url      => "http://www.karlshell.com/www/pdfs/gale73.pdf",
+                                     :analysis => ""
                                     },
                                     {:thesis_id =>  2,
                                      :title    => "Debreu1959",
@@ -34,14 +37,16 @@
                                          " formal analysis of producer behavior, consumer behavior, general equilibrium," <<
                                          " and the optimality of the market mechanism for resource allocation" <<
                                          "University of Yale, New Haven, 1959",
-                                     :url      => "http://books.google.com"
+                                     :url      => "http://books.google.com",
+                                     :analysis => ""
                                     } ,
                                     {:thesis_id =>  3,
                                      :title    => "Stiglitz1981",
                                      :citation => "Theory of Commodity Price Stabilization" <<
                                           " by David M.G. Newbery and Joseph E. Stiglitz ISBN 0198284179 ISBN 978-0198284178,  " <<
                                           " Oxford University Press [Hardcover: 512 pages]",
-                                     :url      => ""
+                                     :url      => "",
+                                     :analysis => ""
                                     }
                                   ])
 
