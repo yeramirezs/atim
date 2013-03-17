@@ -51,7 +51,11 @@
 					                 	<h4>Citation</h4><%= c.citation %>	
 					                 </ul> 
 					                 <ul>
-					                 	<h4>Analisis</h4><%= c.analysis %>	
+					                 	<%= form_for :source, :url=>{:email=>@student.email, :id=>c.id,:method => :post, :action=>"updateResource"} do |f| %>
+					                 	<h4>Analisis</h4>
+					                 	 <%= text_area_tag('analysis', c.analysis, :class=>"text", :rows => 8, :cols => 20) %>
+					                 	 <%= f.submit  "Update analysis", :class => "btn" %>
+					                 	<%end%>
 					                 </ul>   
 					            </td>
 					        </tr>

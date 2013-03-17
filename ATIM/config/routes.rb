@@ -38,6 +38,7 @@ ATIM::Application.routes.draw do
 
   match '/indexStudent', to: 'index#indexUsuario', :as => 'indexUsuario'
   match '/newResource', to: 'index#createResource', :as => 'createResource'
+  match '/updateResource', to: 'index#updateResource', :as => 'updateResource'
   match '/entregas', to: 'index#indexDeliverable', :as => 'indexDeliverable'
   match '/stateOfArt', to: 'index#resourcesIndex', :as => 'resourcesIndex'
   match '/commitmentsStudent', to: 'index#commitments', :as => 'commitmentsStudent'
