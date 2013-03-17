@@ -89,6 +89,8 @@ class IndexController < ApplicationController
   def updateResource
     @student = Student.search(params[:email])
     @source = Source.find(params[:id])
+    @source.analysis = params[:analysis]
+    @source.save
     redirect_to resourcesIndex_path(:email=>@student.email)
 
   end
