@@ -78,4 +78,11 @@ class IndexController < ApplicationController
     end
     @commitments =  Commitment.where( query).sort_by( &:due_date)
   end
+
+  def createResource
+    @student = Student.search(params[:email])
+    @source = Source.create!(params[:source])
+    redirect_to resourcesIndex_path(:email=>@student.email)
+
+  end
 end

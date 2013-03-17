@@ -9,29 +9,54 @@
     		<%= render "layouts/menuStudent"%>
     	</td>
 	    <td width="75%" valign="top">
-			<table id="report" width="55%">
-		        <tr >
-		        	<h1>Fuentes de investigación de la tesis</h1></br>
-		        </tr>
-		        <% @sources.each do |c| %>
-		        <tr>
-		            <td><%= c.title %></td>
-		            <td align="right"><div class="arrow"></div></td>
-		        </tr>
-		        
-		        <tr>
-		            <td colspan="5">
-		                <ul>
-		                    <h4>Url</h4><%= c.url %></br>	
-		                    
-		                 </ul> 
-		                  <ul>
-		                 	<h4>Citation</h4><%= c.citation %>	
-		                 </ul>  
-		            </td>
-		        </tr>
-		        <% end %>
-		    </table>
+	    	<h1>Fuentes de investigación de la tesis</h1>
+	    	    <div class="tabbable"> <!-- Only required for left/right tabs -->
+				    <ul class="nav nav-tabs">
+				    <li class="active"><a href="#tab1" data-toggle="tab">Agregar nueva fuente</a></li>
+				    <li><a href="#tab2" data-toggle="tab">Listar fuentes</a></li>
+				    </ul>
+				    <div class="tab-content">
+				    <div class="tab-pane active" id="tab1">
+					    <%= stylesheet_link_tag 'sources.css', :media => 'screen' %>
+					      <%= form_for :source, :url=>{:email=>@student.email, :method => :post, :action=>"createResource"} do |f| %>
+					        <%= f.hidden_field :thesis_id, :value=>@thesis.id %>
+					        <%= f.label  :title, 'Title:'  %><%= f.text_field  :title %>
+					        <%= f.label :url, 'URL'  %>
+					        <%= f.text_field  :url  %>
+
+					        <div width="50%" >
+					          <%= f.label :citation, 'Citation' %>
+					          <%= f.text_area :citation, :class=> 'text', :rows => 6, :cols => 25 %>
+					        </div>
+
+					        <%= f.hidden_field :analysis, :value=> 'none' %>
+
+					        <%= f.submit 'Save new source' %>
+					      <%end%>
+				    </div>
+				    <div class="tab-pane" id="tab2">
+				    	<table id="report" width="55%">
+				    		<tr></tr>
+					        <% @sources.each do |c| %>
+					        <tr>
+					            <td><%= c.title %></td>
+					            <td align="right"><div class="arrow"></div></td>
+					        </tr>
+					        <tr>
+					            <td colspan="5">
+					                <ul>
+					                    <h4>Url</h4><%= c.url %></br>	
+					                 </ul> 
+					                  <ul>
+					                 	<h4>Citation</h4><%= c.citation %>	
+					                 </ul>  
+					            </td>
+					        </tr>
+					       <% end %>
+					    </table>
+				    </div>
+				    </div>
+			    </div>
 	  	</td>
    </tr>
 </table>

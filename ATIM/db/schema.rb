@@ -48,8 +48,7 @@ ActiveRecord::Schema.define(:version => 20130311050645) do
     t.integer "thesis_id", :null => false
     t.string  "title",     :null => false
     t.text    "citation",  :null => false
-    t.string  "url",       :null => true
-    t.text    "analysis",  :null => true
+    t.string  "url"
   end
 
   create_table "students", :force => true do |t|
