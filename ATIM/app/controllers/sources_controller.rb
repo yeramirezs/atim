@@ -20,9 +20,21 @@ class SourcesController < ApplicationController
     @source = Source.find params[:id]
     @source.analysis = params[:analysis]
     @source.save
-    flash[:notice] = "#{@source.title} successfully updated."
+    flash[:notice] = " Analysis of #{@source.title} updated."
     redirect_to :controller => 'sources', :action => 'analysis', :id => params[:id]
 
+  end
+
+  def new
+    @thesis  = Thesis.find(params[:id])
+    @teacher = Teacher.find(@thesis.teacher_id)
+  end
+
+  def create
+
+    @source = Source.create!(params[:source])
+    redirect_to :controller => 'sources', :action => 'search',  :id => @source.thesis_id
+#    redirect_to sources_path @source.thesis_id
   end
 
 end

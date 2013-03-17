@@ -16,6 +16,23 @@ Then /^I close commitment "([^"]*)"$/ do |comm_id|
 end
 
 
+When /^I list sources of thesis "([^\"]*)"$/ do |thesis|
+  visit "/sources/" << thesis
+end
+
+
+Then  /^I select source "([^\"]*)" and press "([^\"]*)"$/  do |source, action|
+  visit "/sources/" << source << "/edit"
+end
+
+
+When /^execute "([^"]*)"$/ do |action|
+  click_button(action)
+end
+
+Then /^I fill analysis with "([^"]*)"$/ do |analysis|
+  fill_in('analysis', :with => analysis)
+end
 
 When /^I enter with the username "([^\"]*)"$/ do |username|
   visit root_path
@@ -58,4 +75,3 @@ end
 Then /^I cant see the button "([^\"]*)"$/ do |name|
   page.should_not have_button(name)
 end
-

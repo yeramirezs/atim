@@ -13,6 +13,8 @@ class Thesis < ActiveRecord::Base
 
 	has_many :commitments
 
+  has_many  :sources
+
   has_many :recommendations
 
   has_many :deliverables

@@ -4,9 +4,11 @@ ATIM::Application.routes.draw do
 
   resources :students
 
-  get 'sources/:id'         => 'sources#search'
-  get 'sources/:id/edit'    => 'sources#analysis'
-  put 'sources/update'      => 'sources#update'
+  get  'sources/new'         => 'sources#new'
+  post 'sources/new'         => 'sources#create'
+  get  'sources/:id'         => 'sources#search'
+  get  'sources/:id/edit'    => 'sources#analysis'
+  put  'sources/update'      => 'sources#update'
 
   resources :sources
 
