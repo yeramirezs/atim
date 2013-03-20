@@ -9,7 +9,13 @@
     		<%= render "layouts/menuStudent"%>
     	</td>
 	    <td width="75%">
-	    	
+          <table>
+          <% @thesis.deliverables.each do |deliverable| %>
+          <tr>
+            <td><i>Entregable del <%= deliverable.created_at  %></i>:&nbsp;&nbsp;&nbsp;<%= deliverable.title %></td>
+          </tr>
+        <% end %>
+            </table>
 	  	</td>
    </tr>
 </table>
