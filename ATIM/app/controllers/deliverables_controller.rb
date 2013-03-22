@@ -44,6 +44,8 @@ class DeliverablesController < ApplicationController
     @teacher = Teacher.find(@thesis.teacher_id)
     @deliverable = Deliverable.new(params[:deliverable])
     @deliverable.thesis_id = @thesis.id
+    #@deliverable.title = params[:deliverable][:file_name].original_filename.to_s
+    @deliverable.file_name = params[:deliverable][:file].original_filename.to_s
 
 
     respond_to do |format|
