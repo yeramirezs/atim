@@ -47,7 +47,7 @@ ATIM::Application.routes.draw do
 
 
   match '/commitmentsSearch', to: 'commitments#search', :as => 'commitmentsSearch'
-
+  match '/meetingsStudent', to: 'index#meetings', :as => 'meetingsStudent'
   match '/indexStudent', to: 'index#indexUsuario', :as => 'indexUsuario'
   match '/newResource', to: 'index#createResource', :as => 'createResource'
   match '/updateResource', to: 'index#updateResource', :as => 'updateResource'

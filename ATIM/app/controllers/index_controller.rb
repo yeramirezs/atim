@@ -94,4 +94,11 @@ class IndexController < ApplicationController
     redirect_to resourcesIndex_path(:email=>@student.email)
 
   end
+
+  def meetings
+    @thesis_id = params[:id]
+    @student = Student.search(params[:email])
+    @thesis = Thesis.find(@student.thesis_id)
+
+  end
 end
