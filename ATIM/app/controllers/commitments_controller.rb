@@ -12,11 +12,11 @@ class CommitmentsController < ApplicationController
 
 
   def search
-    @commitment = params[:id]
-    @thesis = Thesis.find( @commitment.thesis)
-    @meeting = Meeting.find_by_thesis_id( @commitment.thesis)
+    
+    @thesis = Thesis.find(params[:id])
+    @meeting = Meeting.find_by_thesis_id( @thesis.id)
     @teacher =  Teacher.find(@thesis.teacher_id)
-    query = 'thesis_id = ' << @thesis_id
+    query = 'thesis_id = ' << @thesis.id.to_s
     comm_type = params[:comm_type]
     if comm_type == 'open' then
        query  = query << " and done = false"
@@ -30,7 +30,7 @@ class CommitmentsController < ApplicationController
               end
          end
     end
-    @commitments =  Commitment.where( query).sort_by( &:due_date)
+    @commitments =  Commitment.where(query).sort_by( &:due_date)
   end
 
   # POST /commitments

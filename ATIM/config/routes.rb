@@ -45,6 +45,9 @@ ATIM::Application.routes.draw do
 
   root  to: 'home#login'
 
+
+  match '/commitmentsSearch', to: 'commitments#search', :as => 'commitmentsSearch'
+
   match '/indexStudent', to: 'index#indexUsuario', :as => 'indexUsuario'
   match '/newResource', to: 'index#createResource', :as => 'createResource'
   match '/updateResource', to: 'index#updateResource', :as => 'updateResource'

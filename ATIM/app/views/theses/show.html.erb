@@ -45,7 +45,7 @@
 							    <li><a href="#tab5" data-toggle="tab">Nuevo Compromiso</a></li>
                                 <li><a href="#tab8" data-toggle="tab">Nueva nota de Reunion</a></li>
                                 <li><a href="#tab7" data-toggle="tab">Entregables</a></li>
-                                <li><%= link_to "Consultar compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
+                                <li><%= link_to "Consultar compromisos", commitmentsSearch_path(:id=>@thesis.id, :comm_type=>'open') %></li>
                                 <li><%= link_to "Listar fuentes", source_path(:id=>@thesis) %></li>
                                <!-- <li><%= link_to "Crear fuentes", new_source_path(:id=>@thesis) %></li>-->
 							</ul>
@@ -130,35 +130,24 @@
                                       <%= f.text_field :title, :placeholder => 'Title' %>
                                     </div>
                                     <div class="field">
-                                      <%= f.text_field :created_at, :placeholder => 'Created at' %>
+                                      <%= f.text_field :fecha, :placeholder => 'Fecha' %>
                                     </div>
-                                    <div class="field">
-                                      <%= f.text_field :updated_at, :placeholder => 'Updated at' %>
-                                    </div>
-
-
                                     <div class="actions">
-                                      <%= f.submit "Guardar", class: "btn"%>
+                                      <%= f.submit "Crear", class: "btn"%>
                                     </div>
                                 <% end %>
                                        <table>
                                          <tr>
                                            <td><b>Title</b></td>
-                                           <td><b>Created at</b></td>
-                                           <td><b>Updated at</b></td>
+                                           <td><b>Fecha</b></td>
                                          </tr>
                                 <% @meetings.each do |meeting| %>
                                     <tr>
                                       <td><%= meeting.title %></td>
-                                      <td><%= meeting.created_at %></td>
-                                      <td><%= meeting.updated_at %></td>
-
-
+                                      <td><%= meeting.fecha %></td>
                                     </tr>
-
                                 <% end %>
-                                       </table>
-
+                              </table>
                               </div>
                                 <div class="tab-pane" id="tab5">
                                   <b>Lista de Reuniones</b>
@@ -311,15 +300,6 @@
                                   </tr>
                                 </table>
                               </div>
-
-
-
-
-
-
-
-
-
 
                                 <div class="tab-pane" id="tab8">
                                   <b>Lista de Reuniones</b>
