@@ -1,7 +1,7 @@
 class Commitment  < ActiveRecord::Base
 
   validates_presence_of :due_date, :description
-
+  belongs_to :meeting
   belongs_to :thesis
 
   def meeting_date ( meeting_id)

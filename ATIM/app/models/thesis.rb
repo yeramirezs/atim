@@ -11,13 +11,15 @@ class Thesis < ActiveRecord::Base
 
 	has_many :students
 
-	has_many :commitments
+	has_many :meetings
 
   has_many  :sources
 
   has_many :recommendations
 
   has_many :deliverables
+
+  has_many :meeting_notes
 
 
 

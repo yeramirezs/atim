@@ -1,5 +1,14 @@
 ATIM::Application.routes.draw do
 
+  resources :meeting_notes
+
+
+  resources :commitments
+
+
+  resources :meetings
+
+
   resources :deliverables
 
   resources :students

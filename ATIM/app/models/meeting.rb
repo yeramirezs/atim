@@ -1,5 +1,7 @@
-class Meeting   < ActiveRecord::Base
+class Meeting < ActiveRecord::Base
+  belongs_to :thesis
+  validates_presence_of :title, :created_at, :updated_at, :thesis_id
+  has_many :commitments
+  has_many :meeting_notes
 
-  validates_presence_of :title, :fecha
-  # To change this template use File | Settings | File Templates.
 end

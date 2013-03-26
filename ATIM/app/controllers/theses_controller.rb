@@ -26,6 +26,12 @@ class ThesesController < ApplicationController
     end
     @thesis = Thesis.find(params[:id])
     @student = Student.new
+    @meeting = Meeting.new
+    @meetings = Meeting.find_all_by_thesis_id(@thesis)
+    @commitment = Commitment.new
+    @commitments = Commitment.find_all_by_meeting_id(@meeting)
+    @meeting_note = MeetingNote.new
+    @meeting_notes = MeetingNote.find_all_by_meeting_id( @meeting)
     if(@teacher.id!=@thesis.teacher_id)
       flash[:notice] = "Error de autentificacion"
       redirect_to root_path

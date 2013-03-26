@@ -42,7 +42,8 @@
                                 <li><a href="#tab6" data-toggle="tab">Recomendaciones</a></li>
                               <% end %>
 							    <li><a href="#tab3" data-toggle="tab">Nueva Reunion</a></li>
-							    <li><a href="#tab5" data-toggle="tab">Consultar Reuniones</a></li>
+							    <li><a href="#tab5" data-toggle="tab">Nuevo Compromiso</a></li>
+                                <li><a href="#tab8" data-toggle="tab">Nueva nota de Reunion</a></li>
                                 <li><a href="#tab7" data-toggle="tab">Entregables</a></li>
                                 <li><%= link_to "Consultar compromisos", commitment_path(:id=>@thesis, :comm_type=>'open') %></li>
                                 <li><%= link_to "Listar fuentes", source_path(:id=>@thesis) %></li>
@@ -111,12 +112,148 @@
 										<% end %>
 									</table>
 							    </div>
-							    <div class="tab-pane" id="tab3">
-								    <p>Nueva reunion.</p>
-							    </div>
-							    <div class="tab-pane" id="tab5">
+                              <div class="tab-pane" id="tab3">
+                                <b>Nueva reunion.</b>
+                                <%= form_for @meeting, :url=>{:thesis_id=>@thesis.id, :controller=>"meetings", :emailTeacher=>@teacher.email, :action=>"create"}, :method=>"post" do |f| %>
+                                    <% if @meeting.errors.any? %>
+                                        <div id="error_explanation">
+                                          <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
 
-							    </div>
+                                          <ul>
+                                            <% @meeting.errors.full_messages.each do |msg| %>
+                                                <li><%= msg %></li>
+                                            <% end %>
+                                          </ul>
+                                        </div>
+                                    <% end %>
+                                    <div class="field">
+                                      <%= f.text_field :title, :placeholder => 'Title' %>
+                                    </div>
+                                    <div class="field">
+                                      <%= f.text_field :created_at, :placeholder => 'Created at' %>
+                                    </div>
+                                    <div class="field">
+                                      <%= f.text_field :updated_at, :placeholder => 'Updated at' %>
+                                    </div>
+
+
+                                    <div class="actions">
+                                      <%= f.submit "Guardar", class: "btn"%>
+                                    </div>
+                                <% end %>
+                                       <table>
+                                         <tr>
+                                           <td><b>Title</b></td>
+                                           <td><b>Created at</b></td>
+                                           <td><b>Updated at</b></td>
+                                         </tr>
+                                <% @meetings.each do |meeting| %>
+                                    <tr>
+                                      <td><%= meeting.title %></td>
+                                      <td><%= meeting.created_at %></td>
+                                      <td><%= meeting.updated_at %></td>
+
+
+                                    </tr>
+
+                                <% end %>
+                                       </table>
+
+                              </div>
+                                <div class="tab-pane" id="tab5">
+                                  <b>Lista de Reuniones</b>
+                                  <table>
+                                    <tr>
+                                      <td>
+                                        <table>
+                                          <tr>
+                                            <td><b>Title</b></td>
+                                            <td width="10px"></td>
+                                            <td><b>Created at</b></td>
+                                            <td></td>
+                                            <td><b>Updated at</b></td>
+                                          </tr>
+                                          <% @thesis.meetings.each do |meeting| %>
+                                              <tr>
+                                                <td><%= meeting.title %></td>
+                                                <td width="10px"></td>
+                                                <td><%= meeting.created_at %></td>
+                                                <td width="10px"></td>
+                                                <td><%= meeting.updated_at %></td>
+                                                <td>
+                                                  <b>New Commitment</b>
+                                                  <%= form_for @commitment, :url=>{:thesis_id=>@thesis, :idMeeting=>meeting, :emailTeacher=>@teacher.email, :controller=>"commitments", :action=>"create"}, :method => "post" do |f| %>
+                                                      <% if @commitment.errors.any? %>
+                                                          <div id="error_explanation">
+                                                            <h2><%= pluralize(@commitment.errors.count, "error") %> prohibited this commitment from being saved:</h2>
+
+                                                            <ul>
+                                                              <% @commitment.errors.full_messages.each do |msg| %>
+                                                                  <li><%= msg %></li>
+                                                              <% end %>
+                                                            </ul>
+                                                          </div>
+                                                      <% end %>
+
+                                                      <div class="field">
+
+                                                        <%= f.text_field :title, :placeholder => 'Title' %>
+                                                      </div>
+                                                      <div class="field">
+
+                                                        <%= f.text_field :description, :placeholder => 'Description' %>
+                                                      </div>
+                                                      <div class="field">
+
+                                                        <%= f.text_field :due_date, :placeholder => 'Due Date' %>
+                                                      </div>
+                                                      <div class="field">
+
+                                                        <%= f.text_field :done, :placeholder => 'Done' %>
+                                                      </div>
+
+
+                                                      <div class="actions">
+                                                        <%= f.submit %>
+                                                      </div>
+                                                  <% end %>
+
+
+                                                </td>
+
+
+
+                                              </tr>
+                                              </table>
+
+                                        <b>Commitments List</b>
+                                        <table>
+                                              <tr><td><b>Title </b></td>
+                                                <td><b>Description </b></td>
+                                                <td><b>Due date </b></td>
+                                                <td><b>Done </b></td></tr>
+                                              <% @commitments = Commitment.find_all_by_meeting_id(meeting) %>
+                                              <% @commitments.each do |commitment| %>
+                                                  <tr>
+
+                                                    <td><%= commitment.title %></td>
+                                                    <td><%= commitment.description %></td>
+                                                    <td><%= commitment.due_date %></td>
+                                                    <td><%= commitment.done %></td>
+
+                                                  </tr>
+                                              <% end %>
+                                          <% end %>
+
+
+
+                                        </table>
+                                      </td>
+
+                                    </tr>
+                                  </table>
+
+                                </div>
                                 <div class="tab-pane" id="tab6">
                                   <table>
                                   <% @thesis.recommendations.each do |recommendation| %>
@@ -174,8 +311,97 @@
                                   </tr>
                                 </table>
                               </div>
+
+
+
+
+
+
+
+
+
+
+                                <div class="tab-pane" id="tab8">
+                                  <b>Lista de Reuniones</b>
+                                  <table>
+                                    <tr>
+                                      <td>
+                                        <table>
+                                          <tr>
+                                            <td><b>Title</b></td>
+                                            <td width="10px"></td>
+                                            <td><b>Created at</b></td>
+                                            <td></td>
+                                            <td><b>Updated at</b></td>
+                                          </tr>
+                                          <% @thesis.meetings.each do |meeting| %>
+                                              <tr>
+                                                <td><%= meeting.title %></td>
+                                                <td width="10px"></td>
+                                                <td><%= meeting.created_at %></td>
+                                                <td width="10px"></td>
+                                                <td><%= meeting.updated_at %></td>
+                                                <td>
+                                                  <b>New Note</b>
+                                                  <%= form_for @meeting_note, :url=>{:thesis_id=>@thesis, :idMeeting=>meeting, :emailTeacher=>@teacher.email, :controller=>"meeting_notes", :action=>"create"}, :method => "post" do |f| %>
+                                                      <% if @meeting_note.errors.any? %>
+                                                          <div id="error_explanation">
+                                                            <h2><%= pluralize(@meeting_note.errors.count, "error") %> prohibited this meeting note from being saved:</h2>
+
+                                                            <ul>
+                                                              <% @meeting_note.errors.full_messages.each do |msg| %>
+                                                                  <li><%= msg %></li>
+                                                              <% end %>
+                                                            </ul>
+                                                          </div>
+                                                      <% end %>
+
+                                                      <div class="field">
+
+                                                        <%= f.text_area :note, :placeholder => 'Note' %>
+                                                      </div>
+
+                                                      <div class="actions">
+                                                        <%= f.submit %>
+                                                      </div>
+                                                  <% end %>
+
+
+                                                </td>
+
+
+
+                                              </tr>
+                                              <tr><td><b>Meeting Notes List</b></td></tr>
+                                              <tr><td><b>Note </b></td>
+
+                                                <% @meeting_notes = MeetingNote.find_all_by_meeting_id(meeting) %>
+                                                <% @meeting_notes.each do |meetingNote| %>
+                                                  <tr>
+
+                                                    <td><%= meetingNote.note %></td>
+
+
+                                                  </tr>
+                                              <% end %>
+                                          <% end %>
+
+
+
+                                        </table>
+                                      </td>
+
+                                    </tr>
+                                  </table>
+
+                                </div>
+
+
+
                             </div>
-						</div>
+  						</div>
+
+
 					</td>
 				</tr>  
     		</table>
