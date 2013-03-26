@@ -268,37 +268,13 @@
                                 </div>
 
                               <div class="tab-pane" id="tab7">
-                                <table>
-                                  <% @thesis.deliverables.each do |deliverable| %>
-                                      <tr>
-                                        <td><i>El <%= deliverable.created_at  %></i>:<br /><%= deliverable.title %></td>
-                                      </tr>
-                                      <tr>
-                                        <td>Archivo:<br /><%= deliverable.file_name %></td>
-
-                                      </tr>
-                                  <% end %>
-                                </table>
-                                <b>Nuevo entregable:</b>
-                                <table>
-                                  <tr>
-                                    <td><b>Entregable</b></td>
-                                    <%= form_for :deliverable, :url=>{:thesis_id=>@thesis.id, :controller=>"deliverables", :action=>"create"}, :method => "post" do |f| %>
-                                        <div class="field">
-                                          <%= f.text_field :title, :placeholder => 'Title' %>
-                                        </div>
-                                        <div class="field">
-                                          <%= f.file_field :file, :placeholder => 'File' %>
-                                        </div>
-                                        <div class="field">
-                                          <%= f.text_field :description, :placeholder => 'Description' %>
-                                        </div>
-                                        <div class="actions">
-                                          <%= f.submit "Enviar", class: "btn"%>
-                                        </div>
-                                    <% end %>
-                                  </tr>
-                                </table>
+                                    <table>
+                                          <% @thesis.deliverables.each do |deliverable| %>
+                                          <tr>
+                                            <td><i>Entregable del <%= deliverable.created_at  %></i>:&nbsp;&nbsp;&nbsp;<%= deliverable.title %></td>
+                                          </tr>
+                                        <% end %>
+                                    </table>
                               </div>
 
                                 <div class="tab-pane" id="tab8">
