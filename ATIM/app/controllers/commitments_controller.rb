@@ -45,7 +45,7 @@ class CommitmentsController < ApplicationController
 
     respond_to do |format|
       if @commitment.save
-        format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: 'Student was successfully created.' }
+        format.html { redirect_to thesis_path(:id =>@thesis.id, :id2 =>@thesis.teacher_id), notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else
         format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: @student.errors.full_messages}
