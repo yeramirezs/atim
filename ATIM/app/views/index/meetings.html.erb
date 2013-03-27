@@ -9,7 +9,49 @@
     		<%= render "layouts/menuStudent"%>
     	</td>
 	    <td width="75%" valign="top">
-        
+        <h1>Lista de reuniones </h1>
+        <table id="report" width="55%">
+          <%= stylesheet_link_tag 'sources.css', :media => 'screen' %>
+          <tr></tr>
+            <% @meetings.each do |c| %>
+            <tr>
+                <td><%= c.fecha %></td>
+                <td align="right"><div class="arrow"></div></td>
+            </tr>
+            <tr>
+                <td  align="left" colspan="5">
+                    <ul>
+                        <h4>Title</h4><%= c.title%></br> 
+                     </ul> 
+                     <ul>
+                        <div class="tabbable"> <!-- Only required for left/right tabs -->
+                          <ul class="nav nav-tabs">
+                          <li class="active"><a href="#tab1" data-toggle="tab">Agregar una nueva nota a la reunion</a></li>
+                          <li><a href="#tab2" data-toggle="tab">Listar notas de reunion</a></li>
+                          </ul>
+                          <div class="tab-content">
+                          <div class="tab-pane active" id="tab1">
+                            <%= form_for @meeting_note, :url=>{:thesis_id=>@thesis, :idMeeting=>c, :email=>@student.email, :controller=>"meeting_notes", :action=>"create"}, :method => "post" do |f| %>
+                            <h4>Notas de Reunion</h4>
+                             <%= f.text_area :note, :placeholder => 'Note', :class=>"text", :rows => 8, :cols => 20 %>
+                           </br>
+                             <%= f.submit  "Update notes", :class => "btn" %>
+                            <%end%>
+                          </div>
+                          <div class="tab-pane" id="tab2">
+                                <% c.meeting_notes.each do |n| %>
+    
+                                <p> <b>Nota: </b><%= n.note %></p>
+                                
+                               <% end %>
+                          </div>
+                          </div>
+                        </div>
+                     </ul>   
+                </td>
+            </tr>
+           <% end %>
+        </table>
 	  	</td>
    </tr>
 </table>
@@ -22,4 +64,17 @@
     <% end %>
   </td></tr>
 </table>
+<script type="text/javascript">  
+  $(document).ready(function(){
+      $("#report tr:odd").addClass("odd");
+      $("#report tr:not(.odd)").hide();
+      $("#report tr:first-child").show();
+      
+      $("#report tr.odd").click(function(){
+          $(this).next("tr").toggle();
+          $(this).find(".arrow").toggleClass("up");
+      });
+      //$("#report").jExpand();
+  });
+</script> 
 

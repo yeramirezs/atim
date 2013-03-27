@@ -99,6 +99,8 @@ class IndexController < ApplicationController
     @thesis_id = params[:id]
     @student = Student.search(params[:email])
     @thesis = Thesis.find(@student.thesis_id)
+    @meetings = Meeting.find_all_by_thesis_id(@thesis)
+    @meeting_note = MeetingNote.new
 
   end
 end

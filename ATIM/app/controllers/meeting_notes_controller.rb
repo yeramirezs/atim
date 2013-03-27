@@ -41,7 +41,6 @@ class MeetingNotesController < ApplicationController
   # POST /meeting_notes.json
   def create
     @meeting_note = MeetingNote.new(params[:meeting_note])
-    @commitment = Commitment.find_by_meeting_id(params[:idMeeting])
     @thesis = Thesis.find(params[:thesis_id])
     @meeting = Meeting.find(params[:idMeeting])
     @meeting_note.thesis = @thesis
@@ -49,11 +48,9 @@ class MeetingNotesController < ApplicationController
 
     respond_to do |format|
       if @meeting_note.save
-        format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: 'Student was successfully created.' }
-        format.json { render json: @student, status: :created, location: @student }
+        format.html { redirect_to meetingsStudent_path(:email=>params[:email],:id=>@thesis), notice: 'Note updated.' }
       else
-        format.html { redirect_to index_path(:email=>params[:emailTeacher]), notice: @student.errors.full_messages}
-        format.json { render json: @student.errors, status: :unprocessable_entity }
+        format.html { redirect_to meetingsStudent_path(:email=>params[:email],:id=>@thesis), notice: @meeting_note.errors.full_messages}
       end
     end
   end
