@@ -148,82 +148,69 @@
                   </table>
                   </div>
                   <div class="tab-pane" id="tab5">
-                    <b>Lista de Reuniones</b>
-                    <table>
-                      <tr>
-                        <td>
-                          <table>
-                            <tr>
-                              <td><b>Title</b></td>
-                              <td width="10px"></td>
-                              <td><b>Created at</b></td>
-                              <td></td>
-                              <td><b>Updated at</b></td>
-                            </tr>
-                            <% @thesis.meetings.each do |meeting| %>
-                                <tr>
-                                  <td><%= meeting.title %></td>
-                                  <td width="10px"></td>
-                                  <td><%= meeting.created_at %></td>
-                                  <td width="10px"></td>
-                                  <td><%= meeting.updated_at %></td>
-                                  <td>
-                                    <b>New Commitment</b>
-                                    <%= form_for @commitment, :url=>{:thesis_id=>@thesis, :idMeeting=>meeting, :emailTeacher=>@teacher.email, :controller=>"commitments", :action=>"create"}, :method => "post" do |f| %>
-                                        <% if @commitment.errors.any? %>
-                                            <div id="error_explanation">
-                                              <h2><%= pluralize(@commitment.errors.count, "error") %> prohibited this commitment from being saved:</h2>
-
-                                              <ul>
-                                                <% @commitment.errors.full_messages.each do |msg| %>
-                                                    <li><%= msg %></li>
-                                                <% end %>
-                                              </ul>
-                                            </div>
-                                        <% end %>
-                                        <div class="field">
-                                          <%= f.text_field :title, :placeholder => 'Title' %>
+                    <table id="report" width="55%">
+                        <%= stylesheet_link_tag 'sources.css', :media => 'screen' %>
+                        <tr></tr>
+                          <% @meetings.each do |c| %>
+                          <tr>
+                              <td><%= c.fecha %></td>
+                              <td align="right"><div class="arrow"></div></td>
+                          </tr>
+                          <tr>
+                              <td  align="left" colspan="5">
+                                  <ul>
+                                      <h4>Title</h4><%= c.title%></br> 
+                                   </ul> 
+                                   <ul>
+                                      <div class="tabbable"> <!-- Only required for left/right tabs -->
+                                        <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tab24" data-toggle="tab">Agregar compromiso a reunion</a></li>
+                                        <li><a href="#tab25" data-toggle="tab">Listar compromisos de la reunion</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                          <div class="tab-pane active" id="tab24">
+                                            <b>New Commitment</b>
+                                              <%= form_for @commitment, :url=>{:thesis_id=>@thesis, :idMeeting=>c, :emailTeacher=>@teacher.email, :controller=>"commitments", :action=>"create"}, :method => "post" do |f| %>
+                                                  <div class="field">
+                                                    <%= f.text_field :title, :placeholder => 'Title' %>
+                                                  </div>
+                                                  <div class="field">
+                                                    <%= f.text_field :description, :placeholder => 'Description' %>
+                                                  </div>
+                                                  <div class="field">
+                                                    <%= f.text_field :due_date, :placeholder => 'Due Date' %>
+                                                  </div>
+                                                  <div class="field">
+                                                    <%= f.text_field :done, :placeholder => 'Done' %>
+                                                  </div>
+                                                  <div class="actions">
+                                                    <%= f.submit "Crear Compromiso", :class => "btn"%>
+                                                  </div>
+                                              <% end %>
+                                          </div>
+                                          <div class="tab-pane" id="tab25">
+                                            <b>Commitments List</b>
+                                            <table width="100%">
+                                              <% @commitments = Commitment.find_all_by_meeting_id(c) %>
+                                              <% @commitments.each do |commitment| %>
+                                                <tr><td ><%= commitment.title %></td></tr>
+                                                <tr>
+                                                  <td>
+                                                  <ul><b>Descripción</b></br><%= commitment.description %></ul>
+                                                  <ul><b>Fecha de entrega</b></br><%= commitment.due_date %></ul>
+                                                  <ul><b>Completo</b></br><%= commitment.done %></ul>
+                                                </td>
+                                                </tr>
+                                              <%end%> 
+                                            </table>
+                                          </div>
                                         </div>
-                                        <div class="field">
-
-                                          <%= f.text_field :description, :placeholder => 'Description' %>
-                                        </div>
-                                        <div class="field">
-
-                                          <%= f.text_field :due_date, :placeholder => 'Due Date' %>
-                                        </div>
-                                        <div class="field">
-                                          <%= f.text_field :done, :placeholder => 'Done' %>
-                                        </div>
-                                        <div class="actions">
-                                          <%= f.submit %>
-                                        </div>
-                                    <% end %>
-                                  </td>
-                                </tr>
-                                </table>
-                          <b>Commitments List</b>
-                          <table>
-                                <tr><td><b>Title </b></td>
-                                  <td><b>Description </b></td>
-                                  <td><b>Due date </b></td>
-                                  <td><b>Done </b></td></tr>
-                                <% @commitments = Commitment.find_all_by_meeting_id(meeting) %>
-                                <% @commitments.each do |commitment| %>
-                                    <tr>
-
-                                      <td><%= commitment.title %></td>
-                                      <td><%= commitment.description %></td>
-                                      <td><%= commitment.due_date %></td>
-                                      <td><%= commitment.done %></td>
-
-                                    </tr>
-                                <% end %>
-                            <% end %>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
+                                      </div>
+                                   </ul>   
+                              </td>
+                          </tr>
+                          <% end %>
+                      </table>
                   </div>
                   <div class="tab-pane" id="tab6">
                     <table>
@@ -265,3 +252,16 @@
 	  	</td>
    </tr>
 </table>
+<script type="text/javascript">  
+  $(document).ready(function(){
+      $("#report tr:odd").addClass("odd");
+      $("#report tr:not(.odd)").hide();
+      $("#report tr:first-child").show();
+      
+      $("#report tr.odd").click(function(){
+          $(this).next("tr").toggle();
+          $(this).find(".arrow").toggleClass("up");
+      });
+      //$("#report").jExpand();
+  });
+</script> 
