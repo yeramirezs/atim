@@ -49,7 +49,7 @@
                       <td><i>El <%= deliverable.created_at  %></i>:<br /><%= deliverable.title %></td>
                     </tr>
                     <tr>
-                      <td>Archivo:<br /><%= deliverable.file_name %></td>
+                      <td>Archivo:<br /><a href="/files/deliverables/<%= deliverable.file_name %>" target="_blank">Ver archivo</a></td>
 
                     </tr>
                 <% end %>
