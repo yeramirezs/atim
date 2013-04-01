@@ -240,7 +240,7 @@
                       <table>
                             <% @thesis.deliverables.each do |deliverable| %>
                             <tr>
-                              <td><i>Entregable del <%= deliverable.created_at  %></i>:&nbsp;&nbsp;&nbsp;<%= deliverable.title %></td>
+                              <td>El <i><%= deliverable.created_at  %></i> el estudiante entregó: <a href="/files/deliverables/<%= deliverable.file_name %>" target="_blank"><%= deliverable.title %></a></td>
                             </tr>
                           <% end %>
                       </table>
