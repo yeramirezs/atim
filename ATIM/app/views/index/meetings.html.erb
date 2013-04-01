@@ -26,8 +26,9 @@
                      <ul>
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                           <ul class="nav nav-tabs">
-                          <li class="active"><a href="#tab1" data-toggle="tab">Agregar una nueva nota a la reunion</a></li>
-                          <li><a href="#tab2" data-toggle="tab">Listar notas de reunion</a></li>
+                          <li class="active"><a href="#tab1" data-toggle="tab">Agregar una nueva nota</a></li>
+                          <li><a href="#tab2" data-toggle="tab">Listar notas</a></li>
+                          <li><a href="#tab3" data-toggle="tab">Listar compromisos</a></li>
                           </ul>
                           <div class="tab-content">
                           <div class="tab-pane active" id="tab1">
@@ -44,6 +45,22 @@
                                 <p> <b>Nota: </b><%= n.note %></p>
                                 
                                <% end %>
+                          </div>
+                          <div class="tab-pane" id="tab3">
+                              <b>Commitments List</b>
+                              <table width="100%">
+                                <% @commitments = Commitment.find_all_by_meeting_id(c) %>
+                                <% @commitments.each do |commitment| %>
+                                  <tr><td ><%= commitment.title %></td></tr>
+                                  <tr>
+                                    <td>
+                                    <ul><b>Descripción</b></br><%= commitment.description %></ul>
+                                    <ul><b>Fecha de entrega</b></br><%= commitment.due_date %></ul>
+                                    <ul><b>Completo</b></br><%= commitment.done %></ul>
+                                  </td>
+                                  </tr>
+                                <%end%> 
+                              </table>
                           </div>
                           </div>
                         </div>
