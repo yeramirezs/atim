@@ -50,7 +50,7 @@ class DeliverablesController < ApplicationController
 
     respond_to do |format|
       if @deliverable.save
-        format.html { redirect_to @deliverable, notice: 'Deliverable was successfully created.' }
+        format.html { redirect_to indexDeliverable_path(:email=>params[:email]), notice: 'Deliverable was successfully created.' }
         format.json { render json: @deliverable, status: :created, location: @deliverable }
       else
         format.html { render action: "new" }

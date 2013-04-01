@@ -21,7 +21,7 @@
 
                 <table>
                   <tr>
-                    <%= form_for :deliverable, :url=>{:thesis_id=>@thesis.id, :controller=>"deliverables", :action=>"create"}, :method => "post" do |f| %>
+                    <%= form_for :deliverable, :url=>{:thesis_id=>@thesis.id, :email=>@student.email, :controller=>"deliverables", :action=>"create"}, :method => "post" do |f| %>
                         
                         <div class="field">
                           <%= f.text_field :title, :placeholder => 'Title' %>
