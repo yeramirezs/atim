@@ -1,8 +1,5 @@
 ATIM::Application.routes.draw do
 
-  resources :meetings
-
-
   resources :meeting_notes
 
 

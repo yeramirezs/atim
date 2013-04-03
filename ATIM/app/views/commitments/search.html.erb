@@ -48,7 +48,7 @@
               <tr>
                 <td class="r<%=even.to_s%>"><%= c.title %> </td>
                 <td class="r<%=even.to_s%>"><%= c.description %> </td>
-
+                <td class="r<%=even.to_s%>" id="meeting"><%= c.meeting_date( c.meeting_id) %> </td>
                 <td class="r<%=even.to_s%>"><%= c.due_date_day(c.due_date) %> </td>
                 <td class="r<%=even.to_s%>" id="<%= if c.done then 's2'
                     else if c.overdue()  then 's1'
